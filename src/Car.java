@@ -1,6 +1,11 @@
 import java.awt.*;
 import java.lang.*;
 
+/**
+ * Represents a car and the abilities it has, which includes the number of doors, the engine power
+ * the current speed, the current direction, the current position, the color of the car and the model name.
+ */
+
 public class Car implements Movable {
 
     private int nrDoors; // Number of doors on the car

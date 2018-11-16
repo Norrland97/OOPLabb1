@@ -4,6 +4,7 @@ import java.awt.*;
 
 import static org.junit.Assert.*;
 
+
 public class CarTest {
     Car c = new Car(4, 200, Color.BLACK, "Volvo240");
     @Test
