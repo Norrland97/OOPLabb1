@@ -1,5 +1,9 @@
 import java.awt.*;
 
+/**
+ * Represents a Volvo 240.
+ * I has some trim to make it go faster.
+ */
 public class Volvo240 extends Car {
 
     public final static double trimFactor = 1.25;

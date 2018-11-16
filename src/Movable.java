@@ -1,3 +1,7 @@
+/**
+ * Represents The interface Movable, for movable items.
+ * This has three methods which are move, turnLeft and turnRight.
+ */
 public interface Movable {
 
     /**
