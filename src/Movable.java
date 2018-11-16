@@ -5,18 +5,17 @@
 public interface Movable {
 
     /**
-     * Moves the car forwards, depending on the current speed and direction
-     * (updates the coordinates of the car)
+     * Moves the object
      */
     void move();
 
     /**
-     * turns the car to the left by increasing currentDirection
+     * turns the object left
      */
     void turnLeft();
 
     /**
-     * turns the car to the right by decreasing currentDirection
+     * turns the object right
      */
     void turnRight();
 

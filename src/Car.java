@@ -86,7 +86,7 @@ public class Car implements Movable {
     /**
      * changes the color of the car
      *
-     * @param clr
+     * @param clr the color of the car
      */
     public void setColor(Color clr) {
         color = clr;
@@ -150,7 +150,7 @@ public class Car implements Movable {
     //-------------movement of the car------------
 
 
-
+    
     @Override
     public void move() {
 
