@@ -111,6 +111,15 @@ public class CarTest {
         c.startEngine();
         c.gas(1);
         assertEquals( 20.1,c.getCurrentSpeed(), 0.01);
+
+        c.startEngine();
+        c.gas(2);
+        assertEquals( 20.1,c.getCurrentSpeed(), 0.01);
+
+        c.startEngine();
+        c.gas(-1);
+        assertEquals( 0.1,c.getCurrentSpeed(), 0.01);
+
     }
 
     @Test
@@ -122,6 +131,16 @@ public class CarTest {
 
         c.brake(1);
         assertEquals(0, c.getCurrentSpeed(), 0.01);
+
+        c.startEngine();
+        c.gas(1);
+        c.brake(2);
+        assertEquals( 0.1,c.getCurrentSpeed(), 0.01);
+
+        c.startEngine();
+        c.gas(1);
+        c.brake(-1);
+        assertEquals( 20.1,c.getCurrentSpeed(), 0.01);
 
 
     }

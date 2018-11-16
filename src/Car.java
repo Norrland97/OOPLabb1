@@ -170,16 +170,31 @@ public class Car implements Movable {
     }
 
 
+    /**
+     * A method used to increase the speed of the car based of the cars speedFactor and the ammount
+     * given to increase it. Cannot increase the speed of the car higher than enginePower.
+     *
+     * @param amount A value between 0 and 1 given to increase the speed of the car;
+     */
     public void gas(double amount) {
-        if(amount < 0 || amount > 1){
-            throw new IllegalArgumentException("Amount needs to be between 0 and 1");
+        if(amount < 0 ){
+            amount = 0;
+        } else if (amount > 1){
+            amount = 1;
         }
         incrementSpeed(amount);
     }
 
+    /**
+     * This lowers the speed of the car
+     *
+     * @param amount The amount of the speed to slow down the car cannot be lower than 0 or higher than 1
+     */
     public void brake(double amount) {
-        if(amount < 0 || amount > 1){
-            throw new IllegalArgumentException("Amount needs to be between 0 and 1");
+        if(amount < 0 ){
+            amount = 0;
+        } else if (amount > 1){
+            amount = 1;
         }
         decrementSpeed(amount);
     }
