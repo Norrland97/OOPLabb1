@@ -33,5 +33,9 @@ public class Saab95Test {
         c.brake(1);
         assertEquals( 0.1,c.getCurrentSpeed(), 0.01);
 
+        c.brake(1);
+        assertEquals(0, c.getCurrentSpeed(), 0.01);
+
+
     }
 }
