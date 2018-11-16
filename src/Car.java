@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.lang.*;
 
 public class Car implements Movable {
 
@@ -11,11 +12,12 @@ public class Car implements Movable {
     private String modelName; // The car model name
 
     /**
-     *The constructor of Car
-     * @param nrDoors The ammount of doors for the new car
+     * The constructor of Car
+     *
+     * @param nrDoors     The ammount of doors for the new car
      * @param enginePower The power of the enging in Horsepower
-     * @param color The color of the Car
-     * @param modelName The modelname of the car
+     * @param color       The color of the Car
+     * @param modelName   The modelname of the car
      */
     public Car(int nrDoors, double enginePower, Color color, String modelName) {
         this.nrDoors = nrDoors;
@@ -24,7 +26,7 @@ public class Car implements Movable {
         this.color = color;
         this.modelName = modelName;
         this.currentDirection = 0;
-        this.currentPos = new Point(0,0);
+        this.currentPos = new Point(0, 0);
     }
 
     //----------------Getters and setters----------------
@@ -39,6 +41,7 @@ public class Car implements Movable {
 
     /**
      * sets the position of Car
+     *
      * @param currentPos
      */
     public void setCurrentPos(Point currentPos) {
@@ -53,7 +56,8 @@ public class Car implements Movable {
     }
 
     /**
-     *sets the direction of Car
+     * sets the direction of Car
+     *
      * @param currentDirection
      */
     public void setCurrentDirection(double currentDirection) {
@@ -91,6 +95,7 @@ public class Car implements Movable {
 
     /**
      * changes the color of the car
+     *
      * @param clr
      */
     public void setColor(Color clr) {
@@ -114,6 +119,7 @@ public class Car implements Movable {
 
     /**
      * An internal method to get the speed factor of the car
+     *
      * @return speedFactor, the base speedfactor of Car
      */
     protected double speedFactor() {
@@ -124,6 +130,7 @@ public class Car implements Movable {
 
     /**
      * A method used to increase the speed of the car based of the cars speedFactor and the ammount given to increase it
+     *
      * @param amount A value between 0 and 1 given to increase the speed of the car;
      */
     protected void incrementSpeed(double amount) {
@@ -132,6 +139,7 @@ public class Car implements Movable {
 
     /**
      * This lowers the speed of the car
+     *
      * @param amount The amount of the speed to slow down the car
      */
     protected void decrementSpeed(double amount) {
@@ -165,7 +173,7 @@ public class Car implements Movable {
     }
 
     /**
-     *  turns the car to the right by decreasing currentDirection
+     * turns the car to the right by decreasing currentDirection
      */
     @Override
     public void turnRight() {
