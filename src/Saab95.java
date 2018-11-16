@@ -5,7 +5,7 @@ public class Saab95 extends Car {
     /**
      *
      */
-    public boolean turboOn;
+    private boolean turboOn;
 
     /**
      *
@@ -49,19 +49,7 @@ public class Saab95 extends Car {
         return this.getEnginePower() * 0.01 * turbo;
     }
 
-    public void gas(double amount) {
-        if(amount < 0 || amount > 1){
-            throw new IllegalArgumentException("Amount needs to be between 0 and 1");
-        }
-        incrementSpeed(amount);
-    }
 
-    public void brake(double amount) {
-        if(amount < 0 || amount > 1){
-            throw new IllegalArgumentException("Amount needs to be between 0 and 1");
-        }
-        decrementSpeed(amount);
-    }
 
 
 }

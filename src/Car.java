@@ -134,11 +134,11 @@ public class Car implements Movable {
      *
      * @param amount A value between 0 and 1 given to increase the speed of the car;
      */
-    protected void incrementSpeed(double amount) {
+    private void incrementSpeed(double amount) {
 
         currentSpeed = getCurrentSpeed() + speedFactor() * amount;
 
-        if(getCurrentSpeed() >= getEnginePower())
+        if(currentSpeed >= enginePower)
             currentSpeed = enginePower;
 
     }
@@ -149,7 +149,7 @@ public class Car implements Movable {
      * @param amount The amount of the speed to slow down the car. Cannot lower the speed of the car
      *               lower than 0.
      */
-    protected void decrementSpeed(double amount) {
+    private void decrementSpeed(double amount) {
 
         currentSpeed = getCurrentSpeed() - speedFactor() * amount;
 
@@ -189,5 +189,20 @@ public class Car implements Movable {
     @Override
     public void turnRight() {
         currentDirection--;
+    }
+
+
+    public void gas(double amount) {
+        if(amount < 0 || amount > 1){
+            throw new IllegalArgumentException("Amount needs to be between 0 and 1");
+        }
+        incrementSpeed(amount);
+    }
+
+    public void brake(double amount) {
+        if(amount < 0 || amount > 1){
+            throw new IllegalArgumentException("Amount needs to be between 0 and 1");
+        }
+        decrementSpeed(amount);
     }
 }

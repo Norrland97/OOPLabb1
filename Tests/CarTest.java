@@ -89,14 +89,14 @@ public class CarTest {
 
     @Test
     public void incrementSpeed() {
-        c.incrementSpeed(10);
+        //c.incrementSpeed(10);
         assertEquals(200.0, c.getCurrentSpeed(), 0.01);
     }
 
     @Test
     public void decrementSpeed() {
 
-        c.decrementSpeed(10);
+        //c.decrementSpeed(10);
         assertEquals(-200.0, c.getCurrentSpeed(), 0.01);
 
     }
@@ -104,7 +104,7 @@ public class CarTest {
     @Test
     public void move() {
         c.startEngine();
-        c.incrementSpeed(10);
+        //c.incrementSpeed(10);
         c.move();
 
         assertEquals(new Point(200,0),c.getCurrentPos());
