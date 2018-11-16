@@ -129,21 +129,32 @@ public class Car implements Movable {
     //--------Change speed----------
 
     /**
-     * A method used to increase the speed of the car based of the cars speedFactor and the ammount given to increase it
+     * A method used to increase the speed of the car based of the cars speedFactor and the ammount
+     * given to increase it. Cannot increase the speed of the car higher than enginePower.
      *
      * @param amount A value between 0 and 1 given to increase the speed of the car;
      */
     protected void incrementSpeed(double amount) {
+
         currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+
+        if(getCurrentSpeed() >= getEnginePower())
+            currentSpeed = enginePower;
+
     }
 
     /**
      * This lowers the speed of the car
      *
-     * @param amount The amount of the speed to slow down the car
+     * @param amount The amount of the speed to slow down the car. Cannot lower the speed of the car
+     *               lower than 0.
      */
     protected void decrementSpeed(double amount) {
+
         currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+
+        if(getCurrentSpeed() < 0)
+            currentSpeed = 0;
     }
 
     //-------------movement of the car------------
