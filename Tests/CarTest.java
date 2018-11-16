@@ -12,26 +12,9 @@ public class CarTest {
     }
 
     @Test
-    public void setCurrentPos() {
-
-        c.setCurrentPos(new Point(1,1));
-        assertEquals(new Point(1,1), c.getCurrentPos());
-
-
-
-    }
-
-    @Test
     public void getCurrentDirection() {
 
         assertEquals(0.0, c.getCurrentDirection());
-
-    }
-
-    @Test
-    public void setCurrentDirection() {
-        c.setCurrentDirection(30);
-        assertEquals(30.0, c.getCurrentDirection());
 
     }
 
@@ -89,25 +72,25 @@ public class CarTest {
 
     @Test
     public void incrementSpeed() {
-        //c.incrementSpeed(10);
-        assertEquals(200.0, c.getCurrentSpeed(), 0.01);
+        c.gas(1);
+        assertEquals(20.0, c.getCurrentSpeed(), 0.01);
     }
 
     @Test
     public void decrementSpeed() {
 
-        //c.decrementSpeed(10);
-        assertEquals(-200.0, c.getCurrentSpeed(), 0.01);
+        c.brake(1);
+        assertEquals(0, c.getCurrentSpeed(), 0.01);
 
     }
 
     @Test
     public void move() {
         c.startEngine();
-        //c.incrementSpeed(10);
+        c.gas(1);
         c.move();
 
-        assertEquals(new Point(200,0),c.getCurrentPos());
+        assertEquals(new Point(20,0),c.getCurrentPos());
         c.stopEngine();
     }
 
@@ -121,5 +104,25 @@ public class CarTest {
     public void turnRight() {
         c.turnRight();
         assertEquals(-1.0, c.getCurrentDirection());
+    }
+
+    @Test
+    public void gas() {
+        c.startEngine();
+        c.gas(1);
+        assertEquals( 20.1,c.getCurrentSpeed(), 0.01);
+    }
+
+    @Test
+    public void brake() {
+        c.startEngine();
+        c.gas(1);
+        c.brake(1);
+        assertEquals( 0.1,c.getCurrentSpeed(), 0.01);
+
+        c.brake(1);
+        assertEquals(0, c.getCurrentSpeed(), 0.01);
+
+
     }
 }

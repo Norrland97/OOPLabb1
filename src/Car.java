@@ -39,14 +39,7 @@ public class Car implements Movable {
         return currentPos;
     }
 
-    /**
-     * sets the position of Car
-     *
-     * @param currentPos
-     */
-    public void setCurrentPos(Point currentPos) {
-        this.currentPos = currentPos;
-    }
+
 
     /**
      * @return Returns current direction of Car
@@ -55,14 +48,6 @@ public class Car implements Movable {
         return currentDirection;
     }
 
-    /**
-     * sets the direction of Car
-     *
-     * @param currentDirection
-     */
-    public void setCurrentDirection(double currentDirection) {
-        this.currentDirection = currentDirection;
-    }
 
 
     /**
@@ -153,17 +138,14 @@ public class Car implements Movable {
 
         currentSpeed = getCurrentSpeed() - speedFactor() * amount;
 
-        if(getCurrentSpeed() < 0)
+        if(currentSpeed < 0)
             currentSpeed = 0;
     }
 
     //-------------movement of the car------------
 
 
-    /**
-     * Moves the car forwards, depending on the current speed and direction
-     * (updates the coordinates of the car)
-     */
+
     @Override
     public void move() {
 
@@ -175,17 +157,13 @@ public class Car implements Movable {
     }
 
 
-    /**
-     * turns the car to the left by increasing currentDirection
-     */
+
     @Override
     public void turnLeft() {
         currentDirection++;
     }
 
-    /**
-     * turns the car to the right by decreasing currentDirection
-     */
+
     @Override
     public void turnRight() {
         currentDirection--;

@@ -19,23 +19,5 @@ public class Saab95Test {
         assertEquals(2.0, c.speedFactor());
     }
 
-    @Test
-    public void gas() {
-        c.startEngine();
-        c.gas(1);
-        assertEquals( 2.7,c.getCurrentSpeed());
-    }
 
-    @Test
-    public void brake() {
-        c.startEngine();
-        c.gas(1);
-        c.brake(1);
-        assertEquals( 0.1,c.getCurrentSpeed(), 0.01);
-
-        c.brake(1);
-        assertEquals(0, c.getCurrentSpeed(), 0.01);
-
-
-    }
 }
