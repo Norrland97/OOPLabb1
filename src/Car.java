@@ -150,7 +150,10 @@ public class Car implements Movable {
     //-------------movement of the car------------
 
 
-    
+    /**
+     * Moves the car forwards, depending on the current speed and direction
+     * (updates the coordinates of the car)
+     */
     @Override
     public void move() {
 
@@ -162,13 +165,17 @@ public class Car implements Movable {
     }
 
 
-
+    /**
+     * turns the car to the left by increasing currentDirection
+     */
     @Override
     public void turnLeft() {
         currentDirection++;
     }
 
-
+    /**
+     * turns the car to the right by decreasing currentDirection
+     */
     @Override
     public void turnRight() {
         currentDirection--;
