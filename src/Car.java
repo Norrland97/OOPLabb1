@@ -126,7 +126,7 @@ public class Car implements Movable {
      */
     private void incrementSpeed(double amount) {
 
-        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+        currentSpeed = currentSpeed + speedFactor() * amount;
 
         if(currentSpeed >= enginePower)
             currentSpeed = enginePower;
@@ -141,7 +141,7 @@ public class Car implements Movable {
      */
     private void decrementSpeed(double amount) {
 
-        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+        currentSpeed = currentSpeed - speedFactor() * amount;
 
         if(currentSpeed < 0)
             currentSpeed = 0;
