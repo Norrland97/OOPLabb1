@@ -52,12 +52,6 @@ public class ScaniaTest {
     }
 
     @Test
-    public void move() {
-
-    }
-
-
-    @Test
     public void startEngine(){
 
         s.raiseBedAngle();
