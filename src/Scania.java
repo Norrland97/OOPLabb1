@@ -60,5 +60,20 @@ public class Scania extends Car {
 
     }
 
+    /**
+     * "Starts up the engine"
+     * Actually: gives the car an small ammount of speed
+     * Cannot start if the flat bed angle is greater than 0
+     */
+    @Override
+    public void startEngine() {
+        if (flatBedAngle == 0){
+            super.startEngine();
+        }else {
+            System.out.println("The flat bed is up, the truck cannot start");
+        }
+
+    }
+
 
 }
