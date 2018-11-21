@@ -99,6 +99,7 @@ public class Car implements Movable {
      * Actually: gives the car an small ammount of speed
      */
     public void startEngine() {
+        currentSpeed = 0.1;
         engineOn = true;
     }
 

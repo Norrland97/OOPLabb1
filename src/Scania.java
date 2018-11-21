@@ -29,7 +29,7 @@ public class Scania extends Car {
         if (getCurrentSpeed() == 0) {
             flatBedAngle++;
         } else {
-            System.out.println("Cannot lower flat bed while driving!");
+            System.out.println("Cannot raise flat bed while driving!");
         }
 
         if (flatBedAngle > 70) {

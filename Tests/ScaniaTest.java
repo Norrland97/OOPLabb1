@@ -22,6 +22,12 @@ public class ScaniaTest {
 
         s.raiseBedAngle();
 
+        s.startEngine();
+        s.gas(1);
+        s.raiseBedAngle();
+
+        System.out.println(s.getCurrentSpeed());
+
         double b = s.getFlatBedAngle();
 
         assertTrue(a < b);
@@ -31,9 +37,9 @@ public class ScaniaTest {
     @Test
     public void lowerBedAngle() {
 
-        s.raiseBedAngle();
-        s.raiseBedAngle();
-        s.raiseBedAngle();
+
+        for(int i = 0; i < 72; i++)
+            s.raiseBedAngle();
 
         double a = s.getFlatBedAngle();
 
@@ -43,9 +49,8 @@ public class ScaniaTest {
 
         assertTrue(a > b);
 
-        s.lowerBedAngle();
-        s.lowerBedAngle();
-        s.lowerBedAngle();
+        for(int i = 0; i < 75; i++)
+            s.lowerBedAngle();
 
         assertEquals(0.0,s.getFlatBedAngle());
 
@@ -54,11 +59,13 @@ public class ScaniaTest {
     @Test
     public void startEngine(){
 
+        s.startEngine();
+
         s.raiseBedAngle();
 
         s.startEngine();
 
-        assertEquals(0.0, s.getCurrentSpeed());
+        assertEquals(0.1, s.getCurrentSpeed());
 
     }
 
