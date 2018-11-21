@@ -15,6 +15,7 @@ public class Car implements Movable {
     private Point currentPos;
     private Color color; // Color of the car
     private String modelName; // The car model name
+    private boolean engineOn;
 
     /**
      * The constructor of Car
@@ -32,6 +33,7 @@ public class Car implements Movable {
         this.modelName = modelName;
         this.currentDirection = 0;
         this.currentPos = new Point(0, 0);
+        this.engineOn = false;
     }
 
     //----------------Getters and setters----------------
@@ -97,13 +99,14 @@ public class Car implements Movable {
      * Actually: gives the car an small ammount of speed
      */
     public void startEngine() {
-        currentSpeed = 0.1;
+        engineOn = true;
     }
 
     /**
      * Sets the speed of the car to 0, The car stops;
      */
     public void stopEngine() {
+        engineOn = false;
         currentSpeed = 0;
     }
 
@@ -126,7 +129,12 @@ public class Car implements Movable {
      */
     private void incrementSpeed(double amount) {
 
-        currentSpeed = currentSpeed + speedFactor() * amount;
+        if (engineOn) {
+            currentSpeed = currentSpeed + speedFactor() * amount;
+        } else {
+            System.out.println("Start engine first");
+            return;
+        }
 
         if(currentSpeed >= enginePower)
             currentSpeed = enginePower;
