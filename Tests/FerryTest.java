@@ -11,7 +11,7 @@ public class FerryTest {
     @Test
     public void move() {
 
-        f.
+
 
         f.startEngine();
         f.gas(1);

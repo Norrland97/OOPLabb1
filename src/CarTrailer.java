@@ -40,7 +40,7 @@ public class CarTrailer extends Car {
         if (!flatBedDown) {
             super.startEngine();
         } else {
-            System.out.println("The flat bed is up, the truck cannot start");
+            System.out.println("The flat bed is down, the truck cannot start");
         }
 
     }
@@ -88,16 +88,21 @@ public class CarTrailer extends Car {
      * The Car will be unloaded in the CarTrailers proximity.
      */
     public void unloadCar() {
+        if (loadedCars.size() > 0) {
+            Car car = loadedCars.get(loadedCars.size() - 1);
 
-        Car car = loadedCars.get(loadedCars.size() - 1);
+            if (flatBedDown && loadedCars.size() > 0) {
+                loadedCars.remove(loadedCars.size() - 1);
+                //Update position of car to not the position of CarTrailer
+                moveUnloadedCar(car);
+            } else {
+                System.out.println("Can only unload car when flat bed is down.");
+            }
 
-        if (flatBedDown && loadedCars.size() > 0) {
-            loadedCars.remove(loadedCars.size() - 1);
-            //Update position of car to not the position of CarTrailer
-            moveUnloadedCar(car);
-        } else {
-            System.out.println("Can only unload car when flat bed is down.");
-        }
+        } else
+            System.out.println("no more cars to unload");
+
+
     }
 
 

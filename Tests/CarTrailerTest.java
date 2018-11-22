@@ -11,6 +11,12 @@ public class CarTrailerTest {
 
     @Test
     public void loadCar() {
+        Car c1 = new Saab95(2, 200, Color.BLACK, "Saab95", true);
+        Car c2 = new Saab95(2, 200, Color.BLACK, "Saab95", true);
+        Car c3 = new Saab95(2, 200, Color.BLACK, "Saab95", true);
+        Car c4 = new Saab95(2, 200, Color.BLACK, "Saab95", true);
+        Car c5 = new Saab95(2, 200, Color.BLACK, "Saab95", true);
+
         ct.startEngine();
         ct.gas(0.4);
         ct.turnLeft();
@@ -37,20 +43,24 @@ public class CarTrailerTest {
         ct = new CarTrailer(2, 200, Color.BLACK, "Cartrailer", 5);
         ct.loadCar(ct);//Ska inte fungera... should print "cannot load itself"
 
+        ct.lowerFlatBed();
+        ct.loadCar(c);
+        ct.loadCar(c1);
+        ct.loadCar(c2);
+        ct.loadCar(c3);
+        ct.loadCar(c4);
+        ct.loadCar(c5);
+        ct.raiseFlatBed();
+
+        ct.loadCar(c5);
+
     }
 
     @Test
     public void unloadCar() {
-        ct.startEngine();
-        ct.gas(0.4);
-        ct.turnLeft();
-        ct.move();
-        ct.stopEngine();
+
         ct.lowerFlatBed();
         ct.loadCar(c);
-
-        ct.startEngine(); // prints "the flat bed is up, the truck cannot start"
-
         ct.raiseFlatBed();
         ct.startEngine();
         ct.gas(1);
@@ -64,15 +74,24 @@ public class CarTrailerTest {
         ct.move();
         ct.move();
         assertNotSame(ct.getCurrentPos(), c.getCurrentPos());
+        ct.stopEngine();
 
-
-
+        ct.raiseFlatBed();
+        ct.unloadCar();
+        ct.lowerFlatBed();
+        ct.unloadCar();
 
 
     }
 
     @Test
     public void flatBed() {
+        ct.lowerFlatBed();
+        ct.startEngine(); // prints "the flat bed is down, the truck cannot start"
+        ct.raiseFlatBed();
+        ct.startEngine();
+        ct.lowerFlatBed();
+        ct.stopEngine();
 
     }
 
