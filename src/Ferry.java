@@ -70,5 +70,53 @@ public class Ferry implements Movable {
             System.out.println("Can only unload car when ferry is docked.");
         }
     }
-    
+
+    public void startEngine(){
+        parent.startEngine();
+    }
+
+    public void gas(double amount){
+        parent.gas(amount);
+    }
+
+    public Point getCurrentPos() {
+        return parent.getCurrentPos();
+    }
+
+    public double getCurrentDirection() {
+        return parent.getCurrentDirection();
+    }
+
+    public double getEnginePower() {
+        return parent.getEnginePower();
+    }
+
+    public double getCurrentSpeed() {
+        return parent.getCurrentSpeed();
+    }
+
+    public Color getColor() {
+        return parent.getColor();
+    }
+
+    public void stopEngine() {
+        parent.stopEngine();
+    }
+
+    protected double speedFactor() {
+        parent.speedFactor();
+    }
+
+    private void incrementSpeed(double amount) {
+        parent.incrementSpeed(amount);
+    }
+
+    private void decrementSpeed(double amount) {
+        parent.decrementSpeed(amount);
+    }
+
+    public void brake(double amount) {
+        parent.brake(amount);
+    }
+
 }

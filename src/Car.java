@@ -128,7 +128,7 @@ public class Car implements Movable {
      *
      * @param amount A value between 0 and 1 given to increase the speed of the car;
      */
-    private void incrementSpeed(double amount) {
+    public void incrementSpeed(double amount) {
 
         if (engineOn) {
             currentSpeed = currentSpeed + speedFactor() * amount;
@@ -148,7 +148,7 @@ public class Car implements Movable {
      * @param amount The amount of the speed to slow down the car. Cannot lower the speed of the car
      *               lower than 0.
      */
-    private void decrementSpeed(double amount) {
+    public void decrementSpeed(double amount) {
 
         currentSpeed = currentSpeed - speedFactor() * amount;
 
