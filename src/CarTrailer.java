@@ -55,7 +55,7 @@ public class CarTrailer extends Car {
      *
      * @param car The car which will get loaded.
      */
-    public <A extends Car> void loadCar(A car) {
+    public void loadCar(Car car) {
 
         if (flatBedDown && loadedCars.size() <= maxLoad && checkProximity(car.getCurrentPos())) {
 
