@@ -54,19 +54,21 @@ public class Ferry implements Movable {
         } else if(loadedCars.size() >= maxLoad) {
             System.out.println("Ferry is full");
         }else if(!isDocked){
-            System.out.println("Can only load car when flat bed is down.");
+            System.out.println("Can only load car when ferry is docked.");
         }
     }
 
     public void unloadCar() {
 
-        Car car = loadedCars.get(loadedCars.size());
+        Car car = loadedCars.get(0);
 
         if (isDocked && loadedCars.size() > 0) {
-            loadedCars.remove(loadedCars.size());
-            //Update position of car to the position of CarTrailer
+            loadedCars.remove(0);
+            car.getCurrentPos().x = parent.getCurrentPos().x - 5;
+            car.getCurrentPos().y = parent.getCurrentPos().y - 5;
         } else {
-            System.out.println("Can only unload car when flat bed is down.");
+            System.out.println("Can only unload car when ferry is docked.");
         }
     }
+    
 }

@@ -103,11 +103,6 @@ public class CarTrailer extends Car {
 
     }
 
-
-
-
-    //---------private methods----------
-
     /**
      * Moves the cars on top of the trailer along with the trailer
      */
