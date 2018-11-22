@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *Represents a car trailer it can hold a set number of cars,
+ * Represents a car trailer it can hold a set number of cars,
  * It can only load cars while stationary.
  */
 public class CarTrailer extends Car {
@@ -34,6 +34,21 @@ public class CarTrailer extends Car {
     //----------Public methods-----------
 
     /**
+     * "Starts up the engine"
+     * Actually: gives the car an small ammount of speed
+     * Cannot start if the flat bed angle is greater than 0
+     */
+    @Override
+    public void startEngine() {
+        if (!flatBedDown) {
+            super.startEngine();
+        } else {
+            System.out.println("The flat bed is up, the truck cannot start");
+        }
+
+    }
+
+    /**
      * Method which lowers the flat bed. Allows for loading of cars.
      */
     public void lowerFlatBed() {
@@ -59,14 +74,14 @@ public class CarTrailer extends Car {
     public void loadCar(Car car) {
 
         if (flatBedDown && loadedCars.size() <= maxLoad && checkProximity(car.getCurrentPos())) {
-            if (!car.getClass().equals(this.getClass())){
-            loadedCars.add(car);
-            moveLoadedCars();
+            if (!car.getClass().equals(this.getClass())) {
+                loadedCars.add(car);
+                moveLoadedCars();
             } else
                 System.out.println("Cannot load other car trailers or itself");
-        } else if(loadedCars.size() >= maxLoad) {
+        } else if (loadedCars.size() >= maxLoad) {
             System.out.println("CarTrailer is full");
-        }else if(!flatBedDown){
+        } else if (!flatBedDown) {
             System.out.println("Can only load car when flat bed is down.");
         }
     }
@@ -77,10 +92,10 @@ public class CarTrailer extends Car {
      */
     public void unloadCar() {
 
-        Car car = loadedCars.get(loadedCars.size());
+        Car car = loadedCars.get(loadedCars.size() - 1);
 
         if (flatBedDown && loadedCars.size() > 0) {
-            loadedCars.remove(loadedCars.size());
+            loadedCars.remove(loadedCars.size() - 1);
             //Update position of car to not the position of CarTrailer
             moveUnloadedCar(car);
         } else {
@@ -91,6 +106,7 @@ public class CarTrailer extends Car {
 
     /**
      * moves a recently unloaded car away from the car traielr.
+     *
      * @param car the recently unloaded car
      */
     private void moveUnloadedCar(Car car) {
@@ -119,7 +135,7 @@ public class CarTrailer extends Car {
      * Moves the cars on top of the trailer along with the trailer
      */
     public void moveLoadedCars() {
-        for (Car car: loadedCars){
+        for (Car car : loadedCars) {
             car.getCurrentPos().x = getCurrentPos().x;
             car.getCurrentPos().y = getCurrentPos().y;
         }
@@ -127,10 +143,11 @@ public class CarTrailer extends Car {
 
     /**
      * Checks if the point is within the loading proximity or not
+     *
      * @param point
      * @return true if point is within 'Loading proximity'
      */
-    public boolean checkProximity(Point point){
+    public boolean checkProximity(Point point) {
 
         return point.x <= this.getCurrentPos().x + loadingProximity && point.x >= this.getCurrentPos().x - loadingProximity &&
                 point.y <= this.getCurrentPos().y + loadingProximity && point.y >= this.getCurrentPos().y - loadingProximity;

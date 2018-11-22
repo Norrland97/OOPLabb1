@@ -41,6 +41,33 @@ public class CarTrailerTest {
 
     @Test
     public void unloadCar() {
+        ct.startEngine();
+        ct.gas(0.4);
+        ct.turnLeft();
+        ct.move();
+        ct.stopEngine();
+        ct.lowerFlatBed();
+        ct.loadCar(c);
+
+        ct.startEngine(); // prints "the flat bed is up, the truck cannot start"
+
+        ct.raiseFlatBed();
+        ct.startEngine();
+        ct.gas(1);
+        ct.move();
+        ct.stopEngine();
+        ct.lowerFlatBed();
+        ct.unloadCar();
+        ct.raiseFlatBed();
+        ct.startEngine();
+        ct.gas(1);
+        ct.move();
+        ct.move();
+        assertNotSame(ct.getCurrentPos(), c.getCurrentPos());
+
+
+
+
 
     }
 
