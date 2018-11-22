@@ -31,6 +31,12 @@ public class CarTrailerTest {
         ct.lowerFlatBed();
         ct.loadCar(c);
         assertTrue(c.getCurrentPos() != ct.getCurrentPos());
+
+
+
+        ct = new CarTrailer(2, 200, Color.BLACK, "Cartrailer", 5);
+        ct.loadCar(ct);//Ska inte fungera... :(
+
     }
 
     @Test

@@ -39,7 +39,7 @@ public class CarTrailer extends Car {
         if (getCurrentSpeed() == 0)
             flatBedDown = true;
         else
-            System.out.println("Cant lower flat bed while driving");
+            System.out.println("Can't lower flat bed while driving");
     }
 
     /**
@@ -55,9 +55,10 @@ public class CarTrailer extends Car {
      *
      * @param car The car which will get loaded.
      */
-    public void loadCar(Car car) {
+    public <A extends Car> void loadCar(A car) {
 
         if (flatBedDown && loadedCars.size() <= maxLoad && checkProximity(car.getCurrentPos())) {
+
             loadedCars.add(car);
             moveLoadedCars();
         } else if(loadedCars.size() >= maxLoad) {
