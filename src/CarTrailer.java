@@ -11,6 +11,7 @@ public class CarTrailer extends Car {
     private Boolean flatBedDown;
     private final int maxLoad;
     private Stack<Car> loadedCars = new Stack<>();
+    private double loadingProximity = 10;
 
     /**
      * Constructor of a CarTrailer
@@ -51,10 +52,12 @@ public class CarTrailer extends Car {
      */
     public void loadCar(Car car) {
 
-        if (flatBedDown && loadedCars.size() <= maxLoad /* && position of car is close to carTrailer*/) {
+        if (flatBedDown && loadedCars.size() <= maxLoad && checkProximity(car.getCurrentPos())) {
             loadedCars.push(car);
             //Update position of car to the position of CarTrailer
-        } else {
+        } else if(loadedCars.size() <= maxLoad) {
+            System.out.println("CarTrailer is full");
+        }else if(!flatBedDown){
             System.out.println("Can only load car when flat bed is down.");
         }
     }
@@ -71,8 +74,14 @@ public class CarTrailer extends Car {
             loadedCars.pop();
             //Update position of car to the position of CarTrailer
         } else {
-            System.out.println("Can only load car when flat bed is down.");
+            System.out.println("Can only unload car when flat bed is down.");
         }
+    }
+
+    private boolean checkProximity(Point point){
+
+        return point.x <= this.getCurrentPos().x + loadingProximity && point.x >= this.getCurrentPos().x - loadingProximity &&
+                point.y <= this.getCurrentPos().y + loadingProximity && point.y >= this.getCurrentPos().y - loadingProximity;
     }
 
 }
