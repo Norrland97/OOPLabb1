@@ -2,8 +2,7 @@ import java.awt.*;
 
 /**
  * Represents a Scania
- * it has a flat bed that it can lower and raise
- * between 0 and 70 degrees
+ * it has a flat bed that it can lower and raise between 0 and 70 degrees.
  */
 public class Scania extends Car {
 

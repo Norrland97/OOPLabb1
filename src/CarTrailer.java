@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- *
+ *Represents a car trailer it can hold a set number of cars,
+ * It can only load cars while stationary.
  */
-
 public class CarTrailer extends Car {
 
     private Boolean flatBedDown;
