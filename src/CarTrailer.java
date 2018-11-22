@@ -77,6 +77,8 @@ public class CarTrailer extends Car {
      */
     public void unloadCar() {
 
+        Car car = loadedCars.get(loadedCars.size());
+
         if (flatBedDown && loadedCars.size() > 0) {
             loadedCars.remove(loadedCars.size());
             //Update position of car to not the position of CarTrailer
