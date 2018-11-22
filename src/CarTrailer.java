@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 /**
  *Represents a car trailer it can hold a set number of cars,
@@ -64,7 +63,7 @@ public class CarTrailer extends Car {
             loadedCars.add(car);
             moveLoadedCars();
             } else
-                System.out.println("Cannot load itself");
+                System.out.println("Cannot load other car trailers or itself");
         } else if(loadedCars.size() >= maxLoad) {
             System.out.println("CarTrailer is full");
         }else if(!flatBedDown){
@@ -78,12 +77,25 @@ public class CarTrailer extends Car {
      */
     public void unloadCar() {
 
+        Car car = loadedCars.get(loadedCars.size());
+
         if (flatBedDown && loadedCars.size() > 0) {
             loadedCars.remove(loadedCars.size());
-            //Update position of car to the position of CarTrailer
+            //Update position of car to not the position of CarTrailer
+            moveUnloadedCar(car);
         } else {
             System.out.println("Can only unload car when flat bed is down.");
         }
+    }
+
+
+    /**
+     * moves a recently unloaded car away from the car traielr.
+     * @param car the recently unloaded car
+     */
+    private void moveUnloadedCar(Car car) {
+        car.getCurrentPos().x = getCurrentPos().x - 5;
+        car.getCurrentPos().y = getCurrentPos().y - 5;
     }
 
     /**
