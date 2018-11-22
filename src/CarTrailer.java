@@ -60,9 +60,11 @@ public class CarTrailer extends Car {
     public void loadCar(Car car) {
 
         if (flatBedDown && loadedCars.size() <= maxLoad && checkProximity(car.getCurrentPos())) {
-
+            if (!car.getClass().equals(this.getClass())){
             loadedCars.add(car);
             moveLoadedCars();
+            } else
+                System.out.println("Cannot load itself");
         } else if(loadedCars.size() >= maxLoad) {
             System.out.println("CarTrailer is full");
         }else if(!flatBedDown){

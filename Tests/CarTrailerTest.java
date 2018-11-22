@@ -35,7 +35,7 @@ public class CarTrailerTest {
 
 
         ct = new CarTrailer(2, 200, Color.BLACK, "Cartrailer", 5);
-        ct.loadCar(ct);//Ska inte fungera... :(
+        ct.loadCar(ct);//Ska inte fungera... should print "cannot load itself"
 
     }
 
