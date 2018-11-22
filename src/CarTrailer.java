@@ -77,8 +77,6 @@ public class CarTrailer extends Car {
      */
     public void unloadCar() {
 
-        Car car = loadedCars.get(loadedCars.size());
-
         if (flatBedDown && loadedCars.size() > 0) {
             loadedCars.remove(loadedCars.size());
             //Update position of car to not the position of CarTrailer
@@ -123,7 +121,7 @@ public class CarTrailer extends Car {
     /**
      * Moves the cars on top of the trailer along with the trailer
      */
-    private void moveLoadedCars() {
+    public void moveLoadedCars() {
         for (Car car: loadedCars){
             car.getCurrentPos().x = getCurrentPos().x;
             car.getCurrentPos().y = getCurrentPos().y;
