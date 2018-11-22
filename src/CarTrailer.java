@@ -10,7 +10,7 @@ import java.util.Stack;
 public class CarTrailer extends Car {
 
     private Boolean flatBedDown;
-    private final int maxLoad;
+    private int maxLoad;
     private List<Car> loadedCars = new ArrayList<>();
     private double loadingProximity = 10;
 
@@ -28,7 +28,9 @@ public class CarTrailer extends Car {
         this.maxLoad = maxLoad;
     }
 
-
+    public CarTrailer() {
+        super(0, 0, null, null);
+    }
 
     //----------Public methods-----------
 
@@ -121,7 +123,7 @@ public class CarTrailer extends Car {
      * @param point
      * @return true if point is within 'Loading proximity'
      */
-    private boolean checkProximity(Point point){
+    public boolean checkProximity(Point point){
 
         return point.x <= this.getCurrentPos().x + loadingProximity && point.x >= this.getCurrentPos().x - loadingProximity &&
                 point.y <= this.getCurrentPos().y + loadingProximity && point.y >= this.getCurrentPos().y - loadingProximity;
