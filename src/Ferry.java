@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Ferry implements Movable {
 
-    private CarTrailer parent =  new CarTrailer(); //Used for delegation from class CarTrailer.java
+    private CarTrailer parent; //Used for delegation from class CarTrailer.java
 
     private boolean isDocked; // Whether the ferry is docked or not, allows for loading of cars.
     private double enginePower; // Engine power of the ferry
@@ -21,6 +21,7 @@ public class Ferry implements Movable {
     private double loadingProximity = 10;
 
     public Ferry(double enginePower, Color color, String modelName, int maxLoad) {
+        this.parent = new CarTrailer(0, enginePower, color, modelName, maxLoad);
         this.isDocked = true;
         this.enginePower = enginePower;
         this.currentSpeed = 0;
@@ -104,7 +105,7 @@ public class Ferry implements Movable {
     }
 
     protected double speedFactor() {
-        parent.speedFactor();
+        return parent.speedFactor();
     }
 
     private void incrementSpeed(double amount) {

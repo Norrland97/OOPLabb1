@@ -27,9 +27,6 @@ public class CarTrailer extends Car {
         this.maxLoad = maxLoad;
     }
 
-    public CarTrailer() {
-        super(0, 0, null, null);
-    }
 
     //----------Public methods-----------
 
