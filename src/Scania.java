@@ -8,6 +8,14 @@ public class Scania extends Truck {
 
     private double flatBedAngle;
 
+    /**
+     * The constructor of Scania
+     * @param enginePower The engine power of Scania
+     * @param color The color of Scania
+     * @param modelName The model name of Scania
+     * @param nrDoors The number of doors of Scania
+     */
+
     public Scania(double enginePower, Color color, String modelName, int nrDoors) {
         super(enginePower, color, modelName, nrDoors);
         this.flatBedAngle = 0;
