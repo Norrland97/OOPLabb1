@@ -2,34 +2,24 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ferry implements Movable {
+public class Ferry extends Vehicle {
 
     private CarTrailer parent; //Used for delegation from class CarTrailer.java
 
     private boolean isDocked; // Whether the ferry is docked or not, allows for loading of cars.
-    private double enginePower; // Engine power of the ferry
-    private double currentSpeed; // The current speed of the ferry
-    private double currentDirection; // The current position of
-    private Point currentPos;
-    private Color color; // Color of the car
-    private String modelName; // The car model name
-    private boolean engineOn;
     private int maxLoad;
 
     private List<Car> loadedCars = new ArrayList<>();
-
     private double loadingProximity = 10;
 
-    public Ferry(double enginePower, Color color, String modelName, int maxLoad) {
-        this.parent = new CarTrailer(0, enginePower, color, modelName, maxLoad);
-        this.isDocked = true;
-        this.enginePower = enginePower;
-        this.currentSpeed = 0;
-        this.currentDirection = 0;
-        this.currentPos = new Point(0,0);
-        this.color = color;
-        this.modelName = modelName;
-        this.engineOn = false;
+    public Ferry(double enginePower, Color color, String modelName, CarTrailer parent, boolean isDocked,
+                 int maxLoad, List<Car> loadedCars, double loadingProximity) {
+        super(enginePower, color, modelName);
+        this.parent = parent;
+        this.isDocked = isDocked;
+        this.maxLoad = maxLoad;
+        this.loadedCars = loadedCars;
+        this.loadingProximity = loadingProximity;
     }
 
     @Override
@@ -70,54 +60,6 @@ public class Ferry implements Movable {
         } else {
             System.out.println("Can only unload car when ferry is docked.");
         }
-    }
-
-    public void startEngine(){
-        parent.startEngine();
-    }
-
-    public void gas(double amount){
-        parent.gas(amount);
-    }
-
-    public Point getCurrentPos() {
-        return parent.getCurrentPos();
-    }
-
-    public double getCurrentDirection() {
-        return parent.getCurrentDirection();
-    }
-
-    public double getEnginePower() {
-        return parent.getEnginePower();
-    }
-
-    public double getCurrentSpeed() {
-        return parent.getCurrentSpeed();
-    }
-
-    public Color getColor() {
-        return parent.getColor();
-    }
-
-    public void stopEngine() {
-        parent.stopEngine();
-    }
-
-    protected double speedFactor() {
-        return parent.speedFactor();
-    }
-
-    private void incrementSpeed(double amount) {
-        parent.incrementSpeed(amount);
-    }
-
-    private void decrementSpeed(double amount) {
-        parent.decrementSpeed(amount);
-    }
-
-    public void brake(double amount) {
-        parent.brake(amount);
     }
 
 }

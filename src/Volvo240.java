@@ -16,8 +16,8 @@ public class Volvo240 extends Car {
      * @param modelName - The model name of the car - String
      */
 
-    public Volvo240(int nrDoors, double enginePower, Color color, String modelName) {
-        super(nrDoors, enginePower, color, modelName);
+    public Volvo240(double enginePower, Color color, String modelName, int nrDoors) {
+        super(enginePower, color, modelName, nrDoors);
     }
 
     /**
