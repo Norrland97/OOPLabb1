@@ -16,7 +16,7 @@ public class Vehicle implements Movable {
     private String modelName; // The car model name
     private boolean engineOn;
 
-    /**
+    /** The constructor of Vehicle
      *
      * @param enginePower The engine power of the Vehicle
      * @param color The color of the Vehicle

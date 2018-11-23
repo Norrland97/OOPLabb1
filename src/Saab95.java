@@ -6,9 +6,6 @@ import java.awt.*;
  */
 public class Saab95 extends PassengerCar {
 
-    /**
-     *
-     */
     private boolean turboOn;
 
     /**

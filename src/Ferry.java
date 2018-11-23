@@ -2,39 +2,34 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ferry extends Vehicle {
+/**
+ * Represents a vehicle which travels on water and can move Trucks and PassengerCars
+ */
 
-    private CarTrailer parent; //Used for delegation from class CarTrailer.java
+public class Ferry extends Vehicle {
 
     private boolean isDocked; // Whether the ferry is docked or not, allows for loading of cars.
     private int maxLoad;
-
-    private List<Car> loadedCars = new ArrayList<>();
+    private List<Car> loadedCars;
     private double loadingProximity = 10;
 
-    public Ferry(double enginePower, Color color, String modelName, CarTrailer parent, boolean isDocked,
+    /**
+     * The constructor of Ferry
+     * @param enginePower The engine power of the Ferry
+     * @param color The color of the Ferry
+     * @param modelName The model name of the Ferry
+     * @param isDocked Whether the ferry is docked or not. Allows for loading of Cars
+     * @param maxLoad The maximum number of Cars which the Ferry can load
+     * @param loadedCars A list of the Cars which has been loaded
+     * @param loadingProximity The distance from which the Car needs to be to be loaded onto the Ferry
+     */
+    public Ferry(double enginePower, Color color, String modelName, boolean isDocked,
                  int maxLoad, List<Car> loadedCars, double loadingProximity) {
         super(enginePower, color, modelName);
-        this.parent = parent;
         this.isDocked = isDocked;
         this.maxLoad = maxLoad;
         this.loadedCars = loadedCars;
         this.loadingProximity = loadingProximity;
-    }
-
-    @Override
-    public void move() {
-        parent.move();
-    }
-
-    @Override
-    public void turnLeft() {
-        parent.turnLeft();
-    }
-
-    @Override
-    public void turnRight() {
-        parent.turnRight();
     }
 
     public void loadCar(Car car) {
