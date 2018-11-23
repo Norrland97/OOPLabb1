@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class ScaniaTest {
 
-    Scania s = new Scania(2, 200, Color.BLACK, "Scania", 0);
+    Scania s = new Scania(200, Color.BLACK, "Scania", 2);
 
     @Test
     public void getFlatBedAngle() {

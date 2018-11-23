@@ -6,15 +6,11 @@ import static org.junit.Assert.*;
 
 public class FerryTest {
 
-    Ferry f = new Ferry(200, Color.BLACK, "Ferry", 400);
+    Ferry f = new Ferry(200, Color.BLACK, "Ferry", true, 5);
 
     @Test
     public void move() {
 
-
-
-        f.startEngine();
-        f.gas(1);
     }
 
     @Test

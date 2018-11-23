@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class Volvo240Test {
 
-    Volvo240 c = new Volvo240(4, 200, Color.BLACK, "Volvo240");
+    Volvo240 c = new Volvo240(200, Color.BLACK, "Volvo240", 4);
 
     @Test
     public void speedFactor() {

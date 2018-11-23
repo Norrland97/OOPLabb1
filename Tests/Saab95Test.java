@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 public class Saab95Test {
 
-    Saab95 c = new Saab95(4, 200, Color.BLACK, "Saab95", true);
+    Saab95 c = new Saab95(200, Color.BLACK, "Saab95", 4, true);
 
     @Test
     public void setTurboOn() {

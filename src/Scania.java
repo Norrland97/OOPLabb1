@@ -8,9 +8,9 @@ public class Scania extends Truck {
 
     private double flatBedAngle;
 
-    public Scania(double enginePower, Color color, String modelName, int nrDoors, double flatBedAngle) {
+    public Scania(double enginePower, Color color, String modelName, int nrDoors) {
         super(enginePower, color, modelName, nrDoors);
-        this.flatBedAngle = flatBedAngle;
+        this.flatBedAngle = 0;
     }
 
     public double getFlatBedAngle() {

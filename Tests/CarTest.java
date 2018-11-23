@@ -6,7 +6,9 @@ import static org.junit.Assert.*;
 
 
 public class CarTest {
-    Car c = new Car(4, 200, Color.BLACK, "Volvo240");
+
+    Car c = new PassengerCar(4,Color.BLACK,"Volvo240", 4);
+
     @Test
     public void getCurrentPos() {
         assertEquals(new Point(0,0), c.getCurrentPos());
