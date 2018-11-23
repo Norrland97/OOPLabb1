@@ -1,6 +1,4 @@
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Represents a vehicle which travels on water and can move Trucks and PassengerCars
@@ -8,7 +6,6 @@ import java.util.List;
 
 public class Ferry extends Vehicle {
 
-    //private boolean isDocked; // Whether the ferry is docked or not, allows for loading of cars.
     private Transporter<Car> parent;
 
     /**
@@ -23,24 +20,51 @@ public class Ferry extends Vehicle {
                  int maxLoad) {
         super(enginePower, color, modelName);
         this.parent = new Transporter<>(maxLoad, isDocked, getCurrentPos());
-        //this.isDocked = isDocked;
     }
 
+    /**
+     * Method to load cars onto the Ferry
+     * @param car The car which is to be loaded
+     */
     public void loadCar(Car car) {
         parent.loadCar(car);
     }
 
+    /**
+     * Method to unload the car which was first loaded
+     */
     public void unloadCar() {
+        Point point = new Point(getCurrentPos().x - 5, getCurrentPos().y - 5);
+        parent.unloadCar(point, Transporter.UnloadPriority.FIRSTIN);
+    }
 
-        Car car = loadedCars.get(0);
-
-        if (parent.isCanLoad() && loadedCars.size() > 0) {
-            loadedCars.remove(0);
-            car.getCurrentPos().x = parent.getCurrentPos().x - 5;
-            car.getCurrentPos().y = parent.getCurrentPos().y - 5;
+    /**
+     * Method to start the engine. Can't start engined whiled still docked and ready to load cars
+     */
+    @Override
+    public void startEngine(){
+        if (!parent.isCanLoad()) {
+            super.startEngine();
         } else {
-            System.out.println("Can only unload car when ferry is docked.");
+            System.out.println("Can't start while docked");
         }
+    }
+
+    /**
+     * Method to load Cars. Ferry must be stationary to dock.
+     */
+    public void dock() {
+        if (getCurrentSpeed() == 0)
+            parent.setCanLoad(true);
+        else
+            System.out.println("Can't dock while moving");
+    }
+
+    /**
+     * Undocks the ferry
+     */
+    public void unDock() {
+        parent.setCanLoad(false);
     }
 
 }
