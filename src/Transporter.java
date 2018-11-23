@@ -19,7 +19,7 @@ public class Transporter<A extends Vehicle> {
 
     /**
      * constructor of Transporter
-     * 
+     *
      * @param maxLoad   the max load, int value
      * @param canLoad   boolean, represents if loading is possible or not
      * @param currentPosition   the current position ot the transporter

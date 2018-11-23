@@ -6,16 +6,16 @@ import static org.junit.Assert.*;
 
 public class CarTrailerTest {
 
-    CarTrailer ct = new CarTrailer(2, 200, Color.BLACK, "Cartrailer", 5);
-    Car c = new Saab95(2, 200, Color.BLACK, "Saab95", true);
+    CarTrailer ct = new CarTrailer(200,  Color.BLACK, "Cartrailer", 5, false, 5);
+    PassengerCar c = new Saab95(200,  Color.BLACK, "Saab95", 4, true);
 
     @Test
     public void loadCar() {
-        Car c1 = new Saab95(2, 200, Color.BLACK, "Saab95", true);
-        Car c2 = new Saab95(2, 200, Color.BLACK, "Saab95", true);
-        Car c3 = new Saab95(2, 200, Color.BLACK, "Saab95", true);
-        Car c4 = new Saab95(2, 200, Color.BLACK, "Saab95", true);
-        Car c5 = new Saab95(2, 200, Color.BLACK, "Saab95", true);
+        PassengerCar c1 = new Saab95(200,  Color.BLACK, "Saab95", 4, true);
+        PassengerCar c2 = new Saab95(200,  Color.BLACK, "Saab95", 4, true);
+        PassengerCar c3 = new Saab95(200,  Color.BLACK, "Saab95", 4, true);
+        PassengerCar c4 = new Saab95(200,  Color.BLACK, "Saab95", 4, true);
+        PassengerCar c5 = new Saab95(200,  Color.BLACK, "Saab95", 4, true);
 
         ct.startEngine();
         ct.gas(0.4);
@@ -26,8 +26,8 @@ public class CarTrailerTest {
         ct.loadCar(c);
         assertEquals(c.getCurrentPos(), ct.getCurrentPos());
 
-        ct = new CarTrailer(2, 200, Color.BLACK, "Cartrailer", 5);
-        c = new Saab95(2, 200, Color.BLACK, "Saab95", true);
+        ct = new CarTrailer(200,  Color.BLACK, "Cartrailer", 5, false, 5);
+        c = new Saab95(200,  Color.BLACK, "Saab95", 4, true);
 
         ct.startEngine();
         ct.gas(1);
@@ -40,8 +40,8 @@ public class CarTrailerTest {
 
 
 
-        ct = new CarTrailer(2, 200, Color.BLACK, "Cartrailer", 5);
-        ct.loadCar(ct);//Ska inte fungera... should print "cannot load itself"
+        ct = new CarTrailer(200,  Color.BLACK, "Cartrailer", 5, false, 5);
+        //ct.loadCar(ct);//Ska inte fungera...
 
         ct.lowerFlatBed();
         ct.loadCar(c);
