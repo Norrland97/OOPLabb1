@@ -4,7 +4,7 @@ import java.awt.*;
  * Represents a Saab95
  * It's got a turbo to boost the speed.
  */
-public class Saab95 extends Car {
+public class Saab95 extends PassengerCar {
 
     /**
      *
@@ -20,8 +20,8 @@ public class Saab95 extends Car {
      * @param turboOn Whether or not the turbo is activated or not - boolean
      */
 
-    public Saab95(int nrDoors, double enginePower, Color color, String modelName, boolean turboOn) {
-        super(nrDoors, enginePower, color, modelName);
+    public Saab95(double enginePower, Color color, String modelName, int nrDoors, boolean turboOn) {
+        super(enginePower, color, modelName, nrDoors);
         this.turboOn = turboOn;
     }
 

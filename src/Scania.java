@@ -4,12 +4,12 @@ import java.awt.*;
  * Represents a Scania
  * it has a flat bed that it can lower and raise between 0 and 70 degrees.
  */
-public class Scania extends Vehicle {
+public class Scania extends Truck {
 
     private double flatBedAngle;
 
-    public Scania(double enginePower, Color color, String modelName, double flatBedAngle) {
-        super(enginePower, color, modelName);
+    public Scania(double enginePower, Color color, String modelName, int nrDoors, double flatBedAngle) {
+        super(enginePower, color, modelName, nrDoors);
         this.flatBedAngle = flatBedAngle;
     }
 

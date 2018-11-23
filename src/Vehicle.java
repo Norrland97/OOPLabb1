@@ -2,7 +2,7 @@ import java.awt.*;
 import java.lang.*;
 
 /**
- * Represents a car and the abilities it has, which includes the number of doors, the engine power
+ * Represents a vehicle and the abilities it has, which includes the number of doors, the engine power
  * the current speed, the current direction, the current position, the color of the car and the model name.
  */
 
@@ -17,11 +17,12 @@ public class Vehicle implements Movable {
     private boolean engineOn;
 
     /**
-     * The constructor of Car
-     * @param enginePower The power of the enging in Horsepower
-     * @param color       The color of the Car
-     * @param modelName   The modelname of the car
+     *
+     * @param enginePower The engine power of the Vehicle
+     * @param color The color of the Vehicle
+     * @param modelName The model name of the Vehicle
      */
+
     public Vehicle(double enginePower, Color color, String modelName) {
         this.enginePower = enginePower;
         this.currentSpeed = 0;
@@ -36,7 +37,7 @@ public class Vehicle implements Movable {
 
 
     /**
-     * @return Returns the position of the car
+     * @return Returns the position of the Vehicle
      */
     public Point getCurrentPos() {
         return currentPos;
@@ -45,38 +46,38 @@ public class Vehicle implements Movable {
 
 
     /**
-     * @return Returns current direction of Car
+     * @return Returns current direction of Vehicle
      */
     public double getCurrentDirection() {
         return currentDirection;
     }
-    
+
 
     /**
-     * @return Returns the power of the engine of the car
+     * @return Returns the power of the engine of the Vehicle
      */
     public double getEnginePower() {
         return enginePower;
     }
 
     /**
-     * @return Returns the speed of the car
+     * @return Returns the speed of the Vehicle
      */
     public double getCurrentSpeed() {
         return currentSpeed;
     }
 
     /**
-     * @return returns the color of the car
+     * @return returns the color of the Vehicle
      */
     public Color getColor() {
         return color;
     }
 
     /**
-     * changes the color of the car
+     * Changes the color of the Vehicle
      *
-     * @param clr the color of the car
+     * @param clr the color of the Vehicle
      */
     public void setColor(Color clr) {
         color = clr;
@@ -84,7 +85,7 @@ public class Vehicle implements Movable {
 
     /**
      * "Starts up the engine"
-     * Actually: gives the car an small ammount of speed
+     * Actually: gives the Vehicle a small amount of speed
      */
     public void startEngine() {
         currentSpeed = 0.1;
@@ -92,7 +93,7 @@ public class Vehicle implements Movable {
     }
 
     /**
-     * Sets the speed of the car to 0, The car stops;
+     * Sets the speed of the Vehicle to 0, The car stops;
      */
     public void stopEngine() {
         engineOn = false;
@@ -100,9 +101,9 @@ public class Vehicle implements Movable {
     }
 
     /**
-     * An internal method to get the speed factor of the car
+     * An internal method to get the speed factor of the Vehicle
      *
-     * @return speedFactor, the base speedfactor of Car
+     * @return speedFactor, the base speedfactor of Vehicle
      */
     protected double speedFactor() {
         return enginePower * 0.1;
@@ -111,10 +112,10 @@ public class Vehicle implements Movable {
     //--------Change speed----------
 
     /**
-     * A method used to increase the speed of the car based of the cars speedFactor and the ammount
-     * given to increase it. Cannot increase the speed of the car higher than enginePower.
+     * A method used to increase the speed of the Vehicle based of the Vehicle speedFactor and the amount
+     * given to increase it. Cannot increase the speed of the Vehicle higher than enginePower.
      *
-     * @param amount A value between 0 and 1 given to increase the speed of the car;
+     * @param amount A value between 0 and 1 given to increase the speed of the Vehicle;
      */
     public void incrementSpeed(double amount) {
 
@@ -131,7 +132,7 @@ public class Vehicle implements Movable {
     }
 
     /**
-     * This lowers the speed of the car
+     * This lowers the speed of the Vehicle
      *
      * @param amount The amount of the speed to slow down the car. Cannot lower the speed of the car
      *               lower than 0.
@@ -149,7 +150,7 @@ public class Vehicle implements Movable {
 
     /**
      * Moves the car forwards, depending on the current speed and direction
-     * (updates the coordinates of the car)
+     * (updates the coordinates of the Vehicle)
      */
     @Override
     public void move() {
@@ -161,7 +162,7 @@ public class Vehicle implements Movable {
 
 
     /**
-     * turns the car to the left by increasing currentDirection
+     * turns the Vehicle to the left by increasing currentDirection
      */
     @Override
     public void turnLeft() {
@@ -169,7 +170,7 @@ public class Vehicle implements Movable {
     }
 
     /**
-     * turns the car to the right by decreasing currentDirection
+     * turns the Vehicle to the right by decreasing currentDirection
      */
     @Override
     public void turnRight() {
@@ -178,10 +179,10 @@ public class Vehicle implements Movable {
 
 
     /**
-     * A method used to increase the speed of the car based of the cars speedFactor and the ammount
-     * given to increase it. Cannot increase the speed of the car higher than enginePower.
+     * A method used to increase the speed of the Vehicle based of the cars speedFactor and the amount
+     * given to increase it. Cannot increase the speed of the Vehicle higher than enginePower.
      *
-     * @param amount A value between 0 and 1 given to increase the speed of the car;
+     * @param amount A value between 0 and 1 given to increase the speed of the Vehicle;
      */
     public void gas(double amount) {
         if(amount < 0 ){
@@ -193,9 +194,9 @@ public class Vehicle implements Movable {
     }
 
     /**
-     * This lowers the speed of the car
+     * This lowers the speed of the Vehicle
      *
-     * @param amount The amount of the speed to slow down the car cannot be lower than 0 or higher than 1
+     * @param amount The amount of the speed to slow down the Vehicle cannot be lower than 0 or higher than 1
      */
     public void brake(double amount) {
         if(amount < 0 ){

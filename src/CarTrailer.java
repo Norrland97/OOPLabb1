@@ -6,7 +6,7 @@ import java.util.List;
  * Represents a car trailer it can hold a set number of cars,
  * It can only load cars while stationary.
  */
-public class CarTrailer extends Car {
+public class CarTrailer extends Truck {
 
     private Boolean flatBedDown;
     private int maxLoad;
@@ -15,20 +15,20 @@ public class CarTrailer extends Car {
 
     /**
      * Constructor of a CarTrailer
-     *
-     * @param nrDoors     The number of doors of the CarTrailer
      * @param enginePower The engine power of the CarTrailer
      * @param color       The color of the CarTrailer
      * @param modelName   The model name of the CarTrailer
      */
-    public CarTrailer(int nrDoors, double enginePower, Color color, String modelName, int maxLoad) {
-        super(nrDoors, enginePower, color, modelName);
-        this.flatBedDown = false;
+    public CarTrailer(double enginePower, Color color, String modelName, int nrDoors,
+                      Boolean flatBedDown, int maxLoad, List<Car> loadedCars, double loadingProximity) {
+        super(enginePower, color, modelName, nrDoors);
+        this.flatBedDown = flatBedDown;
         this.maxLoad = maxLoad;
+        this.loadedCars = loadedCars;
+        this.loadingProximity = loadingProximity;
     }
 
-
-    //----------Public methods-----------
+//----------Public methods-----------
 
     /**
      * "Starts up the engine"
