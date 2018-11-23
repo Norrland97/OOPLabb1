@@ -42,8 +42,6 @@ public class Transporter<A extends Vehicle> {
         return loadedCars;
     }
 
-    //är dessa rätt sätt ens??..
-
     /**
      * getter for loadabillity
      * @return boolean true, if the loading is possible
