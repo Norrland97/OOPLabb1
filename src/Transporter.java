@@ -1,5 +1,3 @@
-import javafx.scene.effect.Light;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +6,7 @@ import java.util.List;
  * Represents a transporter
  * This has methods to handle loading and unloading the transprter
  */
-public class Transporter <A extends Vehicle>{
+public class Transporter<A extends Vehicle> {
 
     private int maxLoad;
     private List<A> loadedCars;
@@ -27,6 +25,7 @@ public class Transporter <A extends Vehicle>{
 
     /**
      * gets the list oc current loaded cars
+     *
      * @return a list os veicles
      */
     public List<A> getLoadedCars() {
@@ -35,11 +34,11 @@ public class Transporter <A extends Vehicle>{
 
     //är dessa rätt ens??
 
-    public boolean isCanLoad() {
+    protected boolean isCanLoad() {
         return canLoad;
     }
 
-    public void setCanLoad(boolean canLoad) {
+    protected void setCanLoad(boolean canLoad) {
         this.canLoad = canLoad;
     }
 
@@ -47,19 +46,16 @@ public class Transporter <A extends Vehicle>{
     //----------Public methods---------
 
     /**
-     * Method which loads a Car onto the CarTrailer. The amount of cars loaded is decided by the variable maxLoad.
+     * Method which loads a Veichle onto the transporter. The amount of Veichles loaded is decided by the variable maxLoad.
      * The Car needs to be in the proximity of the CarTrailer
      *
      * @param car The car which will get loaded.
      */
-    public void loadCar(Car car) {
+    protected void loadCar(A car) {
 
         if (canLoad && loadedCars.size() <= maxLoad && checkProximity(car.getCurrentPos())) {
-            if (!car.getClass().equals(this.getClass())) {
-                loadedCars.add(car);
-                moveLoadedCars();
-            } else
-                System.out.println("Cannot load other car trailers or itself");
+            loadedCars.add(car);
+            moveLoadedCars();
         } else if (loadedCars.size() >= maxLoad) {
             System.out.println("CarTrailer is full");
         } else if (!canLoad) {
@@ -68,17 +64,17 @@ public class Transporter <A extends Vehicle>{
     }
 
     /**
-     * Method which unloads the Car that's been loaded most recently.
-     * The Car will be unloaded in the CarTrailers proximity.
+     * Method which unloads the veichle that's been loaded most recently.
+     * The Veichle will be unloaded in the transporters proximity.
      */
-    public void unloadCar() {
+    protected void unloadCar(Point point) {
         if (loadedCars.size() > 0) {
-            Car car = loadedCars.get(loadedCars.size() - 1);
+            A car = loadedCars.get(loadedCars.size() - 1);
 
-            if (canLoad && loadedCars.size() > 0) {
+            if (canLoad) {
                 loadedCars.remove(loadedCars.size() - 1);
                 //Update position of car to not the position of CarTrailer
-                moveUnloadedCar(car);
+                moveUnloadedCar(car, point);
             } else {
                 System.out.println("Can only unload car when flat bed is down.");
             }
@@ -90,21 +86,10 @@ public class Transporter <A extends Vehicle>{
     }
 
     /**
-     * moves a recently unloaded car away from the car traielr.
-     *
-     * @param car the recently unloaded car
+     * Moves the trailer along with the given point
+     * (updates the position)
      */
-    private void moveUnloadedCar(Car car) {
-        car.getCurrentPos().x = getCurrentPos().x - 5;
-        car.getCurrentPos().y = getCurrentPos().y - 5;
-    }
-
-    /**
-     * Moves the car forwards, depending on the current speed and direction
-     * (updates the coordinates of the car)
-     */
-
-    public void move(Point point) {
+    protected void move(Point point) {
 
         currentPos.x = point.x;
         currentPos.y = point.y;
@@ -116,25 +101,37 @@ public class Transporter <A extends Vehicle>{
 
     }
 
+    //-------Private Methods--------
+
+    /**
+     * moves a recently unloaded car away from the transporter.
+     *
+     * @param car the recently unloaded car
+     */
+    private void moveUnloadedCar(A car, Point point) {
+        car.getCurrentPos().x = point.x;
+        car.getCurrentPos().y = point.y;
+    }
+
     /**
      * Moves the cars on top of the trailer along with the trailer
      */
-    public void moveLoadedCars() {
+    private void moveLoadedCars() {
         for (A car : loadedCars) {
-            car.getCurrentPos().x = getCurrentPos().x;
-            car.getCurrentPos().y = getCurrentPos().y;
+            car.getCurrentPos().x = currentPos.x;
+            car.getCurrentPos().y = currentPos.y;
         }
     }
 
     /**
      * Checks if the point is within the loading proximity or not
      *
-     * @param point
+     * @param point the point that is being checked.
      * @return true if point is within 'Loading proximity'
      */
-    public boolean checkProximity(Point point) {
+    private boolean checkProximity(Point point) {
 
-        return point.x <= this.getCurrentPos().x + loadingProximity && point.x >= this.getCurrentPos().x - loadingProximity &&
-                point.y <= this.getCurrentPos().y + loadingProximity && point.y >= this.getCurrentPos().y - loadingProximity;
+        return point.x <= currentPos.x + loadingProximity && point.x >= currentPos.x - loadingProximity &&
+                point.y <= currentPos.y + loadingProximity && point.y >= currentPos.y - loadingProximity;
     }
 }
