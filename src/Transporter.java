@@ -13,6 +13,9 @@ public class Transporter<A extends Vehicle> {
     private double loadingProximity = 10;
     private boolean canLoad;
     private Point currentPos;
+    protected enum UnloadPriority {
+        FIRSTIN, LASTIN
+    }
 
     public Transporter(int maxLoad, boolean canLoad, Point currentPosition) {
         this.maxLoad = maxLoad;
@@ -67,9 +70,15 @@ public class Transporter<A extends Vehicle> {
      * Method which unloads the veichle that's been loaded most recently.
      * The Veichle will be unloaded in the transporters proximity.
      */
-    protected void unloadCar(Point point) {
+    protected void unloadCar(Point point, UnloadPriority priority) {
+        int index = 0;
+        if (priority == priority.FIRSTIN){
+            index = loadedCars.size() - 1;
+        }
+
+
         if (loadedCars.size() > 0) {
-            A car = loadedCars.get(loadedCars.size() - 1);
+            A car = loadedCars.get(index);
 
             if (canLoad) {
                 loadedCars.remove(loadedCars.size() - 1);
