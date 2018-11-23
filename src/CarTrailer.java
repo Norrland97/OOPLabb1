@@ -9,7 +9,7 @@ import java.util.List;
 public class CarTrailer extends Truck {
 
     //private Boolean flatBedDown;
-    private Transporter<PassengerCar> trailer;
+    private Transporter<PassengerCar> parent;
 
     /**
      * Constructor of a CarTrailer
@@ -22,7 +22,7 @@ public class CarTrailer extends Truck {
                       Boolean flatBedDown, int maxLoad) {
         super(enginePower, color, modelName, nrDoors);
         //this.flatBedDown = flatBedDown;
-        this.trailer = new Transporter<>(maxLoad, flatBedDown, getCurrentPos());
+        this.parent = new Transporter<>(maxLoad, flatBedDown, getCurrentPos());
     }
 
 //----------Public methods-----------
@@ -34,7 +34,7 @@ public class CarTrailer extends Truck {
      */
     @Override
     public void startEngine() {
-        if (!trailer.isCanLoad()) {
+        if (!parent.isCanLoad()) {
             super.startEngine();
         } else {
             System.out.println("The flat bed is down, the truck cannot start");
@@ -47,7 +47,7 @@ public class CarTrailer extends Truck {
      */
     public void lowerFlatBed() {
         if (getCurrentSpeed() == 0)
-            trailer.setCanLoad(true);
+            parent.setCanLoad(true);
         else
             System.out.println("Can't lower flat bed while driving");
     }
@@ -56,7 +56,7 @@ public class CarTrailer extends Truck {
      * Method which raises the flat bed. Prevents the options of loading of cars.
      */
     public void raiseFlatBed() {
-        trailer.setCanLoad(false);
+        parent.setCanLoad(false);
     }
 
     /**
@@ -66,7 +66,7 @@ public class CarTrailer extends Truck {
      * @param car The car which will get loaded.
      */
     public void loadCar(PassengerCar car) {
-        trailer.loadCar(car);
+        parent.loadCar(car);
     }
 
     /**
@@ -75,7 +75,7 @@ public class CarTrailer extends Truck {
      */
     public void unloadCar() {
         Point point = new Point(getCurrentPos().x - 5, getCurrentPos().y - 5);
-        trailer.unloadCar(point, Transporter.UnloadPriority.LASTIN);
+        parent.unloadCar(point, Transporter.UnloadPriority.LASTIN);
     }
 
     /**
@@ -90,7 +90,7 @@ public class CarTrailer extends Truck {
 
 
         //Moving the transporter
-        trailer.move(getCurrentPos());
+        parent.move(getCurrentPos());
 
     }
 
