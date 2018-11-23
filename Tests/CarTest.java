@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class CarTest {
 
-    Car c = new PassengerCar(4,Color.BLACK,"Volvo240", 4);
+    Car c = new PassengerCar(200,Color.BLACK,"Volvo240", 4);
 
     @Test
     public void getCurrentPos() {
@@ -76,7 +76,14 @@ public class CarTest {
     @Test
     public void incrementSpeed() {
         c.gas(1);
-        assertEquals(20.0, c.getCurrentSpeed(), 0.01);
+        c.startEngine();
+        c.gas(1);
+        assertEquals(20.0, c.getCurrentSpeed(), 1);
+
+        for(int i = 0; i < 20; i++)
+            c.gas(1);
+
+        assertEquals(200.0, c.getCurrentSpeed());
     }
 
     @Test
