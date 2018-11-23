@@ -10,6 +10,17 @@ public class CarTrailerTest {
     PassengerCar c = new Saab95(200,  Color.BLACK, "Saab95", 4, true);
 
     @Test
+    public void Transporter() {
+        Transporter<Car> t = new Transporter(2, false, new Point(0,0));
+        t.loadCar(c);
+        t.setCanLoad(true);
+        t.loadCar(c);
+        assertNotSame(t.getLoadedCars(), 0);
+        t.setCanLoad(false);
+        t.unloadCar(new Point(0,0), Transporter.UnloadPriority.FIRSTIN);
+    }
+
+    @Test
     public void loadCar() {
         PassengerCar c1 = new Saab95(200,  Color.BLACK, "Saab95", 4, true);
         PassengerCar c2 = new Saab95(200,  Color.BLACK, "Saab95", 4, true);
