@@ -15,6 +15,7 @@ public class Vehicle implements Movable {
     private Color color; // Color of the car
     private String modelName; // The car model name
     private boolean engineOn;
+    private boolean isLoaded;
 
     /** The constructor of Vehicle
      *
@@ -31,6 +32,7 @@ public class Vehicle implements Movable {
         this.currentDirection = 0;
         this.currentPos = new Point(0, 0);
         this.engineOn = false;
+        this.isLoaded = false;
     }
 
     //----------------Getters and setters----------------
@@ -107,6 +109,22 @@ public class Vehicle implements Movable {
      */
     protected double speedFactor() {
         return enginePower * 0.1;
+    }
+
+    /**
+     * getter to see if veichle is loaded
+     * @return boolean, true if object is loaded
+     */
+    public boolean isLoaded() {
+        return isLoaded;
+    }
+
+    /**
+     * setter for loading Veichle
+     * @param loaded boolean, true if veichle is loaded, false otherwise
+     */
+    public void setLoaded(boolean loaded) {
+        isLoaded = loaded;
     }
 
     //--------Change speed----------
