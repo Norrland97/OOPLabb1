@@ -17,6 +17,13 @@ public class Transporter<A extends Vehicle> {
         FIRSTIN, LASTIN
     }
 
+    /**
+     * constructor of Transporter
+     * 
+     * @param maxLoad   the max load, int value
+     * @param canLoad   boolean, represents if loading is possible or not
+     * @param currentPosition   the current position ot the transporter
+     */
     public Transporter(int maxLoad, boolean canLoad, Point currentPosition) {
         this.maxLoad = maxLoad;
         this.loadedCars = new ArrayList<>(maxLoad);
