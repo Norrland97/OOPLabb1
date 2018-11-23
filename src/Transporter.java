@@ -42,12 +42,20 @@ public class Transporter<A extends Vehicle> {
         return loadedCars;
     }
 
-    //är dessa rätt ens??
+    //är dessa rätt sätt ens??..
 
+    /**
+     * getter for loadabillity
+     * @return boolean true, if the loading is possible
+     */
     protected boolean isCanLoad() {
         return canLoad;
     }
 
+    /**
+     * setter for loadability
+     * @param canLoad boolean true if loading should be possible
+     */
     protected void setCanLoad(boolean canLoad) {
         this.canLoad = canLoad;
     }
