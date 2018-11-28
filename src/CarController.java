@@ -56,6 +56,8 @@ public class CarController {
         }
     }
 
+    // ----------- Methods to connect the buttons to actions ---------------
+
     // Calls the start engine method for each car once
     void startEngine(){
         for (Car car : cars)
@@ -67,6 +69,14 @@ public class CarController {
         double gas = ((double) amount) / 100;
         for (Car car : cars) {
             car.gas(gas);
+        }
+    }
+
+    // Calls the brake method for each car once
+    void brake(int amount) {
+        double brake = ((double) amount) / 100;
+        for (Car car : cars) {
+            car.brake(brake);
         }
     }
 

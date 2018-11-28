@@ -26,8 +26,8 @@ public class CarView extends JFrame{
 
     private JPanel gasPanel = new JPanel();
     private JSpinner gasSpinner = new JSpinner();
-    private int gasAmount = 0;
-    private JLabel gasLabel = new JLabel("Amount of gas");
+    private int speedAmount = 0;
+    private JLabel speedLabel = new JLabel("Adjust speed");
 
     private JButton gasButton = new JButton("Gas");
     private JButton brakeButton = new JButton("Brake");
@@ -65,12 +65,12 @@ public class CarView extends JFrame{
         gasSpinner = new JSpinner(spinnerModel);
         gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                gasAmount = (int) ((JSpinner)e.getSource()).getValue();
+                speedAmount = (int) ((JSpinner)e.getSource()).getValue();
             }
         });
 
         gasPanel.setLayout(new BorderLayout());
-        gasPanel.add(gasLabel, BorderLayout.PAGE_START);
+        gasPanel.add(speedLabel, BorderLayout.PAGE_START);
         gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
 
         this.add(gasPanel);
@@ -99,14 +99,7 @@ public class CarView extends JFrame{
         stopButton.setPreferredSize(new Dimension(X/5-15,200));
         this.add(stopButton);
 
-        // This actionListener is for the gas button only
-        // TODO: Create more for each component as necessary
-        gasButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.gas(gasAmount);
-            }
-        });
+        // ------------- ActionListeners -------------
 
         // Makes startEngine button start all engines
         startButton.addActionListener(new ActionListener() {
@@ -115,6 +108,25 @@ public class CarView extends JFrame{
                 carC.startEngine();
             }
         });
+
+        // Makes Gas button increase speed for all cars
+        // TODO: Create more for each component as necessary
+        gasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.gas(speedAmount);
+            }
+        });
+
+        // Makes Brake button decrease speed for all cars
+        brakeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.brake(speedAmount);
+            }
+        });
+
+        // ------------------------------------
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
