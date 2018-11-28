@@ -32,6 +32,8 @@ public class DrawPanel extends JPanel{
         try {
             BufferedImage vehicleImage = ImageIO.read(new File("src"+File.separator+"pics"+File.separator+"Volvo240.jpg"));
             vehicleImages.add(vehicleImage);
+            vehicleImages.add(ImageIO.read(new File("src"+File.separator+"pics"+File.separator+"Saab95.jpg")));
+            vehicleImages.add(ImageIO.read(new File("src"+File.separator+"pics"+File.separator+"Scania.jpg")));
         } catch (IOException ex)
         {
             ex.printStackTrace();
@@ -43,9 +45,12 @@ public class DrawPanel extends JPanel{
     // TODO: Change to suit your needs.
     @Override
     protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        int offset = 0;
+
         for(BufferedImage image : vehicleImages){
-            super.paintComponent(g);
-            g.drawImage(image, vehiclePoint.x, vehiclePoint.y, null); // see javadoc for more info on the parameters
+            g.drawImage(image, vehiclePoint.x, vehiclePoint.y + offset, null); // see javadoc for more info on the parameters
+            offset = offset + 100;
         }
     }
 }
