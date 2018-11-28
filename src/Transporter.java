@@ -69,8 +69,9 @@ public class Transporter<A extends Vehicle> {
      */
     protected void loadCar(A car) {
 
-        if (canLoad && loadedCars.size() <= maxLoad && checkProximity(car.getCurrentPos())) {
+        if (canLoad && loadedCars.size() <= maxLoad && checkProximity(car.getCurrentPos()) && !car.isLoaded()) {
             loadedCars.add(car);
+            car.setLoaded(true);
             moveLoadedCars();
         } else if (loadedCars.size() >= maxLoad) {
             System.out.println("CarTrailer is full");
