@@ -2,6 +2,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.Buffer;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -10,7 +12,7 @@ import javax.swing.*;
 public class DrawPanel extends JPanel{
 
     // Just a single image, TODO: Generalize
-    private BufferedImage vehicleImage;
+    private ArrayList<BufferedImage> vehicleImages = new ArrayList<>();
     // To keep track of a singel cars position
     Point vehiclePoint = new Point();
 
@@ -25,9 +27,11 @@ public class DrawPanel extends JPanel{
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.white);
+
         // Print an error message in case file is not found with a try/catch block
         try {
-            vehicleImage = ImageIO.read(new File("src"+File.separator+"pics"+File.separator+"Volvo240.jpg"));
+            BufferedImage vehicleImage = ImageIO.read(new File("src"+File.separator+"pics"+File.separator+"Volvo240.jpg"));
+            vehicleImages.add(vehicleImage);
         } catch (IOException ex)
         {
             ex.printStackTrace();
@@ -39,7 +43,9 @@ public class DrawPanel extends JPanel{
     // TODO: Change to suit your needs.
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(vehicleImage, vehiclePoint.x, vehiclePoint.y, null); // see javadoc for more info on the parameters
+        for(BufferedImage image : vehicleImages){
+            super.paintComponent(g);
+            g.drawImage(image, vehiclePoint.x, vehiclePoint.y, null); // see javadoc for more info on the parameters
+        }
     }
 }
