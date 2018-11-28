@@ -27,7 +27,7 @@ public class DrawPanel extends JPanel{
         this.setBackground(Color.white);
         // Print an error message in case file is not found with a try/catch block
         try {
-            vehicleImage = ImageIO.read(new File("src\\pics\\Volvo240.jpg"));
+            vehicleImage = ImageIO.read(new File("src"+File.separator+"pics"+File.separator+"Volvo240.jpg"));
         } catch (IOException ex)
         {
             ex.printStackTrace();
