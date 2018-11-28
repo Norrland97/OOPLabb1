@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 
 public class CarController {
+
     // member fields:
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
@@ -20,9 +21,9 @@ public class CarController {
     private Timer timer = new Timer(delay, new TimerListener());
 
     // The frame that represents this instance View of the MVC pattern
-    CarView frame;
+    private CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
+    private ArrayList<Car> cars = new ArrayList<>();
 
     //methods:
 
@@ -55,12 +56,28 @@ public class CarController {
         }
     }
 
+    // ----------- Methods to connect the buttons to actions ---------------
+
+    // Calls the start engine method for each car once
+    void startEngine(){
+        for (Car car : cars)
+            car.startEngine();
+    }
+
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Car car : cars
-                ) {
+        for (Car car : cars) {
             car.gas(gas);
         }
     }
+
+    // Calls the brake method for each car once
+    void brake(int amount) {
+        double brake = ((double) amount) / 100;
+        for (Car car : cars) {
+            car.brake(brake);
+        }
+    }
+
 }
