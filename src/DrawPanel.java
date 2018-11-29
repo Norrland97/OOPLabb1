@@ -34,6 +34,7 @@ public class DrawPanel extends JPanel {
         this.setBackground(Color.white);
 
         //print an error message in case file is not found with a try/catch block
+
         try {
             BufferedImage vehicleImage = ImageIO.read(new File("src" + File.separator + "pics" + File.separator + "Volvo240.jpg"));
             vehicleImages.add(vehicleImage);
@@ -43,6 +44,10 @@ public class DrawPanel extends JPanel {
             ex.printStackTrace();
         }
 
+    }
+
+    String getFilePath(){
+        return null;//TODO ersätt filsökvägen från där uppe och gör den generisk
     }
 
     /**
