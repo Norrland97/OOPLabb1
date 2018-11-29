@@ -57,7 +57,7 @@ public class DrawPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        int offset = 0;
+        int offset = 0; //TODO kan göras bättre tydligen (Getposition)
 
         for (BufferedImage image : vehicleImages) {
             g.drawImage(image, vehiclePoint.x, vehiclePoint.y + offset, null); // see javadoc for more info on the parameters
