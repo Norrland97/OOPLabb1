@@ -52,6 +52,7 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.getCurrentPos().getX());
                 int y = (int) Math.round(car.getCurrentPos().getY());
+                //TODO fixa som metod och gå igenom varje bil!
                 frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();

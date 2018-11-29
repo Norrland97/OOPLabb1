@@ -14,12 +14,12 @@ import javax.swing.*;
 
 public class DrawPanel extends JPanel {
 
-    // Just a single image, TODO: Generalize
+    // Just a single image, TODO: Generalize fixa en satans HashMap JUH :D
     private List<BufferedImage> vehicleImages = new ArrayList<>();
     // To keep track of a singel cars position
     Point vehiclePoint = new Point();
 
-    // TODO: Make this genereal for all cars
+    // TODO: Make this genereal for all cars (typ gå igenom en lista med alla bilar och kolla deras position...)
     void moveit(int x, int y) {
         vehiclePoint.x = x;
         vehiclePoint.y = y;
