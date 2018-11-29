@@ -4,10 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-/*
-* This class represents the Controller part in the MVC pattern.
-* It's responsibilities is to listen to the View and responds in a appropriate manner by
-* modifying the model state and the updating the view.
+/**
+ * This class represents the Controller part in the MVC pattern.
+ * It's responsibilities is to listen to the View and responds in a appropriate manner by
+ * modifying the model state and the updating the view.
  */
 
 public class CarController {
@@ -32,8 +32,8 @@ public class CarController {
         CarController cc = new CarController();
 
         cc.cars.add(new Volvo240(200, Color.green, "Volvo240", 2));
-        cc.cars.add(new Saab95(200, Color.green, "Volvo240", 2, false));
-        cc.cars.add(new Scania(200, Color.green, "Volvo240", 2));
+        cc.cars.add(new Saab95(200, Color.green, "Saab95", 2, false));
+        cc.cars.add(new Scania(200, Color.green, "Scania", 2));
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -42,9 +42,10 @@ public class CarController {
         cc.timer.start();
     }
 
-    /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
+    /**
+     * Each step the TimerListener moves all the cars in the list and tells the
+     * view to update its images. Change this method to your needs.
+     */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Car car : cars) {
@@ -60,13 +61,17 @@ public class CarController {
 
     // ----------- Methods to connect the buttons to actions ---------------
 
-    // Calls the start engine method for each car once
-    void startEngine(){
+    /**
+     * Calls the start engine method for each car once
+     */
+    void startEngine() {
         for (Car car : cars)
             car.startEngine();
     }
 
-    // Calls the gas method for each car once
+    /**
+     * Calls the gas method for each car once
+     */
     void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (Car car : cars) {
@@ -74,7 +79,9 @@ public class CarController {
         }
     }
 
-    // Calls the brake method for each car once
+    /**
+     * Calls the brake method for each car once
+     */
     void brake(int amount) {
         double brake = ((double) amount) / 100;
         for (Car car : cars) {
