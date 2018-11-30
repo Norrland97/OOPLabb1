@@ -109,6 +109,7 @@ public class CarController {
         double gas = ((double) amount) / 100;
         for (Car car : cars) {
             car.gas(gas);
+            System.out.println(car);
         }
     }
 

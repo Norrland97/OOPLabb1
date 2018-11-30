@@ -11,13 +11,13 @@ public class CarTrailerTest {
 
     @Test
     public void Transporter() {
-        Transporter<Car> t = new Transporter(2, false, new Point(0,0));
+        Transporter<Car> t = new Transporter(2, false, new Position(0,0));
         t.loadCar(c);
         t.setCanLoad(true);
         t.loadCar(c);
         assertNotSame(t.getLoadedCars(), 0);
         t.setCanLoad(false);
-        t.unloadCar(new Point(0,0), Transporter.UnloadPriority.FIRSTIN);
+        t.unloadCar(new Position(0,0), Transporter.UnloadPriority.FIRSTIN);
     }
 
     @Test
