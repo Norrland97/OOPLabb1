@@ -28,9 +28,9 @@ public class DrawPanel extends JPanel {
         vehiclePoint.y = y;
     }
 
-    //public List<Vehicle> getVehicles() {
-    //    return vehicles;
-    //}
+    public List<? extends Vehicle> getVehicles() {
+        return vehicles;
+    }
 
     public void setVehicles(List<? extends Vehicle> vehicles) {
         this.vehicles = vehicles;
@@ -69,11 +69,12 @@ public class DrawPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        int offset = 0; //TODO kan göras bättre tydligen (Getposition)
 
-        for (BufferedImage image : vehicleImages) {
-            g.drawImage(image, vehiclePoint.x, vehiclePoint.y + offset, null); // see javadoc for more info on the parameters
-            offset = offset + 100;
+        for (int i = 0; i < vehicles.size(); i++) {
+            Vehicle v = vehicles.get(i);
+            int x = (int) Math.round(v.getCurrentPos().x);
+            int y = (int) Math.round(v.getCurrentPos().y);
+            g.drawImage(vehicleImages.get(v.toString()), x, y, null); // see javadoc for more info on the parameters
         }
     }
 }
