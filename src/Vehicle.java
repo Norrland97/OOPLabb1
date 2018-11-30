@@ -182,8 +182,8 @@ public class Vehicle implements Movable {
     @Override
     public void move() {
 
-        currentPos.x = (int) Math.round(currentPos.x + Math.cos(currentDirection) * currentSpeed);
-        currentPos.y = (int) Math.round(currentPos.y + Math.sin(currentDirection) * currentSpeed);
+        currentPos.x = (int) Math.round(currentPos.x + Math.cos(Math.toRadians(currentDirection)) * currentSpeed);
+        currentPos.y = (int) Math.round(currentPos.y + Math.sin(Math.toRadians(currentDirection)) * currentSpeed);
 
     }
 
