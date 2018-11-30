@@ -121,12 +121,15 @@ public class CarView extends JFrame{
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (Car c: carC.cars){
-                    if (c.toString().equals("Scania")){
-                        Scania s = (Scania) c;
-                        s.lowerBedAngle();
-                    }
-                }
+                carC.lowerScaniaFlatBed();
+            }
+        });
+
+        //Raise flat bed for Scania
+        liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.raiseScaniaFlatBed();
             }
         });
 
