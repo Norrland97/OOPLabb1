@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.Buffer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -15,14 +16,24 @@ import javax.swing.*;
 public class DrawPanel extends JPanel {
 
     // Just a single image, TODO: Generalize fixa en satans HashMap JUH :D
-    private List<BufferedImage> vehicleImages = new ArrayList<>();
+    HashMap<String, BufferedImage> vehicleImages = new HashMap<>();
     // To keep track of a singel cars position
     Point vehiclePoint = new Point();
+
+    private List<Vehicle> vehicles = new ArrayList<>();
 
     // TODO: Make this genereal for all cars (typ gå igenom en lista med alla bilar och kolla deras position...)
     void moveit(int x, int y) {
         vehiclePoint.x = x;
         vehiclePoint.y = y;
+    }
+
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
     }
 
     /**
@@ -36,18 +47,21 @@ public class DrawPanel extends JPanel {
         //print an error message in case file is not found with a try/catch block
 
         try {
-            BufferedImage vehicleImage = ImageIO.read(new File("src" + File.separator + "pics" + File.separator + "Volvo240.jpg"));
-            vehicleImages.add(vehicleImage);
-            vehicleImages.add(ImageIO.read(new File("src" + File.separator + "pics" + File.separator + "Saab95.jpg")));
-            vehicleImages.add(ImageIO.read(new File("src" + File.separator + "pics" + File.separator + "Scania.jpg")));
+            for (Vehicle v: vehicles) {
+                BufferedImage vehicleImage = ImageIO.read(new File("src" + File.separator + "pics" + File.separator + "Volvo240.jpg"));
+                vehicleImages.add(vehicleImage);
+                vehicleImages.add(ImageIO.read(new File("src" + File.separator + "pics" + File.separator + "Saab95.jpg")));
+                vehicleImages.add(ImageIO.read(new File("src" + File.separator + "pics" + File.separator + "Scania.jpg")));
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
 
     }
 
-    String getFilePath(){
-        return null;//TODO ersätt filsökvägen från där uppe och gör den generisk
+    <T>String  getFilePath(T c){
+        return "src" + File.separator + "pics" + File.separator + c.toString() +".jpg";
+        // ersatt filsökvägen från där uppe och gör den generisk
     }
 
     /**
