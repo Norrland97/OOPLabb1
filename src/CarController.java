@@ -33,8 +33,15 @@ public class CarController {
         CarController cc = new CarController();
 
         cc.cars.add(new Volvo240(100, Color.green, "Volvo240", 2));
-        cc.cars.add(new Saab95(100, Color.green, "Saab95", 2, false));
+        cc.cars.add(new Saab95(100, Color.green, "Saab95", 2, true));
         cc.cars.add(new Scania(100, Color.green, "Scania", 2));
+
+        int offset = 0;
+
+        for(Car car : cc.cars){
+            car.getCurrentPos().y = offset;
+            offset = offset + 100;
+        }
 
 
         // Start a new view and send a reference of self
@@ -88,6 +95,11 @@ public class CarController {
     void startEngine() {
         for (Car car : cars)
             car.startEngine();
+    }
+
+    void stopAllCars() {
+        for (Car car : cars)
+            car.stopEngine();
     }
 
     /**

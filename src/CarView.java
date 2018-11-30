@@ -141,6 +141,14 @@ public class CarView extends JFrame{
             }
         });
 
+        // Stops all cars
+        stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.stopAllCars();
+            }
+        });
+
         // Makes Gas button increase speed for all cars
         // TODO: Create more for each component as necessary
         gasButton.addActionListener(new ActionListener() {
