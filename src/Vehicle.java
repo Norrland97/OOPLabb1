@@ -1,3 +1,5 @@
+import com.sun.xml.internal.ws.server.ServerRtException;
+
 import java.awt.*;
 import java.lang.*;
 
@@ -83,6 +85,13 @@ public class Vehicle implements Movable {
      */
     public void setColor(Color clr) {
         color = clr;
+    }
+
+    //-----------Other methods--------------
+
+    @Override
+    public String toString(){
+        return modelName;
     }
 
     /**
