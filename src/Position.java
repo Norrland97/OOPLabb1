@@ -1,13 +1,14 @@
 /**
- * 
+ * This represents a position using doubles as x and y coordinates.
  */
 public class Position {
     private double x;
     private double y;
 
     /**
-     * @param x
-     * @param y
+     * constructor of the class Position
+     * @param x the x coordinate
+     * @param y the y coordinate
      */
     public Position(double x, double y) {
         this.x = x;
