@@ -24,7 +24,7 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     private CarView frame;
     // A list of cars, modify if needed
-    static List<Car> cars = new ArrayList<>();
+    List<Car> cars = new ArrayList<>();
 
     //methods:
 
@@ -71,11 +71,12 @@ public class CarController {
                 }
 
                 //TODO fixa som metod och gå igenom varje bil!
-                frame.drawPanel.getVehicles().add(car);
+                frame.getDrawPanel().getVehicles().add(car);
                 frame.drawPanel.moveit(x, y);
-                // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
+
             }
+            // repaint() calls the paintComponent method of the panel
+            frame.drawPanel.repaint();
         }
     }
 

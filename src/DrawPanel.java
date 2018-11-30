@@ -47,10 +47,13 @@ public class DrawPanel extends JPanel {
         //print an error message in case file is not found with a try/catch block
 
         try {
-            for (Vehicle vehicle: vehicles) {
-                BufferedImage vehicleImage = ImageIO.read(new File(getFilePath(vehicle)));
-                vehicleImages.put(vehicle.toString(), vehicleImage);
-            }
+            //for (Vehicle vehicle: vehicles) {
+               // BufferedImage vehicleImage = ImageIO.read(new File(getFilePath(vehicle)));
+               // vehicleImages.put(vehicle.toString(), vehicleImage);
+            //}
+            vehicleImages.put("Volvo240", ImageIO.read(new File("src" + File.separator + "pics" + File.separator +"Volvo240.jpg")));
+            vehicleImages.put("Saab95", ImageIO.read(new File("src" + File.separator + "pics" + File.separator +"Saab95.jpg")));
+            vehicleImages.put("Scania", ImageIO.read(new File("src" + File.separator + "pics" + File.separator +"Scania.jpg")));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
