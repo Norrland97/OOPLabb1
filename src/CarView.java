@@ -106,7 +106,10 @@ public class CarView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (Car c: carC.cars){
-
+                    if (c.toString().equals("Saab95")){
+                        Saab95 s = (Saab95) c;
+                        s.setTurboOn();
+                    }
                 }
             }
         });
