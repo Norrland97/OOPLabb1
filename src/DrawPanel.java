@@ -20,7 +20,7 @@ public class DrawPanel extends JPanel {
     // To keep track of a singel cars position
     Point vehiclePoint = new Point();
 
-    private List<Vehicle> vehicles = new ArrayList<>();
+    private List<? extends Vehicle> vehicles = new ArrayList<>();
 
     // TODO: Make this genereal for all cars (typ gå igenom en lista med alla bilar och kolla deras position...)
     void moveit(int x, int y) {
@@ -28,11 +28,11 @@ public class DrawPanel extends JPanel {
         vehiclePoint.y = y;
     }
 
-    public List<Vehicle> getVehicles() {
-        return vehicles;
-    }
+    //public List<Vehicle> getVehicles() {
+    //    return vehicles;
+    //}
 
-    public void setVehicles(List<Vehicle> vehicles) {
+    public void setVehicles(List<? extends Vehicle> vehicles) {
         this.vehicles = vehicles;
     }
 
@@ -47,11 +47,9 @@ public class DrawPanel extends JPanel {
         //print an error message in case file is not found with a try/catch block
 
         try {
-            for (Vehicle v: vehicles) {
-                BufferedImage vehicleImage = ImageIO.read(new File("src" + File.separator + "pics" + File.separator + "Volvo240.jpg"));
-                vehicleImages.add(vehicleImage);
-                vehicleImages.add(ImageIO.read(new File("src" + File.separator + "pics" + File.separator + "Saab95.jpg")));
-                vehicleImages.add(ImageIO.read(new File("src" + File.separator + "pics" + File.separator + "Scania.jpg")));
+            for (Vehicle vehicle: vehicles) {
+                BufferedImage vehicleImage = ImageIO.read(new File(getFilePath(vehicle)));
+                vehicleImages.put(vehicle.toString(), vehicleImage);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
