@@ -34,7 +34,7 @@ public class Ferry extends Vehicle {
      * Method to unload the car which was first loaded
      */
     public void unloadCar() {
-        Point point = new Point(getCurrentPos().x - 5, getCurrentPos().y - 5);
+        Position point = new Position(getCurrentPos().x - 5, getCurrentPos().y - 5);
         parent.unloadCar(point, Transporter.UnloadPriority.FIRSTIN);
     }
 
