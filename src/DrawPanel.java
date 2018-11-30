@@ -20,7 +20,7 @@ public class DrawPanel extends JPanel {
     // To keep track of a singel cars position
     Point vehiclePoint = new Point();
 
-    private List<? extends Vehicle> vehicles = new ArrayList<>();
+    private List<Vehicle> vehicles = new ArrayList<>();
 
     // TODO: Make this genereal for all cars (typ gå igenom en lista med alla bilar och kolla deras position...)
     void moveit(int x, int y) {
@@ -28,11 +28,11 @@ public class DrawPanel extends JPanel {
         vehiclePoint.y = y;
     }
 
-    public List<? extends Vehicle> getVehicles() {
+    public List<Vehicle> getVehicles() {
         return vehicles;
     }
 
-    public void setVehicles(List<? extends Vehicle> vehicles) {
+    public void setVehicles(List<Vehicle> vehicles) {
         this.vehicles = vehicles;
     }
 
@@ -70,8 +70,8 @@ public class DrawPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for (int i = 0; i < vehicles.size(); i++) {
-            Vehicle v = vehicles.get(i);
+        for (Vehicle v : vehicles) {
+            //Vehicle v = vehicles.get(i);
             int x = (int) Math.round(v.getCurrentPos().x);
             int y = (int) Math.round(v.getCurrentPos().y);
             g.drawImage(vehicleImages.get(v.toString()), x, y, null); // see javadoc for more info on the parameters

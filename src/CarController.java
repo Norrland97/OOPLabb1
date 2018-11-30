@@ -36,7 +36,6 @@ public class CarController {
         cc.cars.add(new Saab95(100, Color.green, "Saab95", 2, false));
         cc.cars.add(new Scania(100, Color.green, "Scania", 2));
 
-        cc.frame.drawPanel.setVehicles(cc.cars);
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -72,6 +71,7 @@ public class CarController {
                 }
 
                 //TODO fixa som metod och gå igenom varje bil!
+                frame.drawPanel.getVehicles().add(car);
                 frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
@@ -109,46 +109,46 @@ public class CarController {
         }
     }
 
-    void setTurboOn(){
-        for (Car c: cars){
-            if (c.toString().equals("Saab95")){
+    void setTurboOn() {
+        for (Car c : cars) {
+            if (c.toString().equals("Saab95")) {
                 Saab95 s = (Saab95) c;
                 s.setTurboOff();
             }
         }
     }
 
-    void setTurboOff(){
-        for (Car c: cars){
-            if (c.toString().equals("Saab95")){
+    void setTurboOff() {
+        for (Car c : cars) {
+            if (c.toString().equals("Saab95")) {
                 Saab95 s = (Saab95) c;
                 s.setTurboOn();
             }
         }
     }
 
-    void lowerScaniaFlatBed(){
-        for (Car c: cars){
-            if (c.toString().equals("Scania")){
+    void lowerScaniaFlatBed() {
+        for (Car c : cars) {
+            if (c.toString().equals("Scania")) {
                 Scania s = (Scania) c;
-                for(int i = 0; i < 70; i++)
+                for (int i = 0; i < 70; i++)
                     s.lowerBedAngle();
             }
         }
     }
 
-    void raiseScaniaFlatBed(){
-        for (Car c: cars){
-            if (c.toString().equals("Scania")){
+    void raiseScaniaFlatBed() {
+        for (Car c : cars) {
+            if (c.toString().equals("Scania")) {
                 Scania s = (Scania) c;
-                for(int i = 0; i < 70; i++)
+                for (int i = 0; i < 70; i++)
                     s.raiseBedAngle();
             }
         }
     }
 
-    private void inverseDirection(Car car){
-        for(int i = 0; i < 4; i++){
+    private void inverseDirection(Car car) {
+        for (int i = 0; i < 4; i++) {
             car.turnLeft();
         }
     }
