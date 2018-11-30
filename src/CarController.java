@@ -127,7 +127,7 @@ public class CarController {
         for (Car c : cars) {
             if (c.toString().equals("Saab95")) {
                 Saab95 s = (Saab95) c;
-                s.setTurboOff();
+                s.setTurboOn();
             }
         }
     }
@@ -136,7 +136,7 @@ public class CarController {
         for (Car c : cars) {
             if (c.toString().equals("Saab95")) {
                 Saab95 s = (Saab95) c;
-                s.setTurboOn();
+                s.setTurboOff();
             }
         }
     }
