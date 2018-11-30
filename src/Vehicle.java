@@ -115,7 +115,7 @@ public class Vehicle implements Movable {
      * @return speedFactor, the base speedfactor of Vehicle
      */
     protected double speedFactor() {
-        return enginePower * 0.1;
+        return enginePower * 0.01;
     }
 
     /**
