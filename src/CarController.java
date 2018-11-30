@@ -52,6 +52,22 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.getCurrentPos().getX());
                 int y = (int) Math.round(car.getCurrentPos().getY());
+
+                if (x < 0) {
+                    x = 0;
+                    inverseDirection(car);
+                } else if (x + 120 > frame.getWidth()) {
+                    x = frame.getWidth() - 120;
+                    inverseDirection(car);
+                }
+                if (y < 0) {
+                    y = 0;
+                    inverseDirection(car);
+                } else if (y + 120 > frame.getHeight()) {
+                    y = frame.getHeight() - 120;
+                    inverseDirection(car);
+                }
+
                 //TODO fixa som metod och gå igenom varje bil!
                 frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
@@ -87,6 +103,12 @@ public class CarController {
         double brake = ((double) amount) / 100;
         for (Car car : cars) {
             car.brake(brake);
+        }
+    }
+
+    private void inverseDirection(Car car){
+        for(int i = 0; i < 4; i++){
+            car.turnLeft();
         }
     }
 

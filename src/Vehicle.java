@@ -193,7 +193,7 @@ public class Vehicle implements Movable {
      */
     @Override
     public void turnLeft() {
-        currentDirection++;
+        currentDirection = currentDirection + 45;
     }
 
     /**
@@ -201,7 +201,7 @@ public class Vehicle implements Movable {
      */
     @Override
     public void turnRight() {
-        currentDirection--;
+        currentDirection = currentDirection - 45;
     }
 
 
