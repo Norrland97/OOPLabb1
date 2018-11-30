@@ -18,7 +18,7 @@ public class DrawPanel extends JPanel {
     // Just a single image, TODO: Generalize fixa en satans HashMap JUH :D
     HashMap<String, BufferedImage> vehicleImages = new HashMap<>();
     // To keep track of a singel cars position
-    Point vehiclePoint = new Point();
+    Position vehiclePoint = new Position();
 
     private List<Vehicle> vehicles = new ArrayList<>();
 

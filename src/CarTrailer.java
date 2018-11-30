@@ -74,7 +74,7 @@ public class CarTrailer extends Truck {
      * The Car will be unloaded in the CarTrailers proximity.
      */
     public void unloadCar() {
-        Point point = new Point(getCurrentPos().x - 5, getCurrentPos().y - 5);
+        Position point = new Position(getCurrentPos().x - 5, getCurrentPos().y - 5);
         parent.unloadCar(point, Transporter.UnloadPriority.LASTIN);
     }
 

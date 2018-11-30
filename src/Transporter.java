@@ -12,7 +12,7 @@ public class Transporter<A extends Vehicle> {
     private List<A> loadedCars;
     private double loadingProximity = 10;
     private boolean canLoad;
-    private Point currentPos;
+    private Position currentPos;
     protected enum UnloadPriority {
         FIRSTIN, LASTIN
     }
@@ -24,7 +24,7 @@ public class Transporter<A extends Vehicle> {
      * @param canLoad   boolean, represents if loading is possible or not
      * @param currentPosition   the current position ot the transporter
      */
-    public Transporter(int maxLoad, boolean canLoad, Point currentPosition) {
+    public Transporter(int maxLoad, boolean canLoad, Position currentPosition) {
         this.maxLoad = maxLoad;
         this.loadedCars = new ArrayList<>(maxLoad);
         this.canLoad = canLoad;
@@ -84,7 +84,7 @@ public class Transporter<A extends Vehicle> {
      * Method which unloads the veichle that's been loaded most recently.
      * The Veichle will be unloaded in the transporters proximity.
      */
-    protected void unloadCar(Point point, UnloadPriority priority) {
+    protected void unloadCar(Position point, UnloadPriority priority) {
         int index = 0;
         if (priority == priority.FIRSTIN){
             index = loadedCars.size() - 1;
@@ -112,7 +112,7 @@ public class Transporter<A extends Vehicle> {
      * Moves the trailer along with the given point
      * (updates the position)
      */
-    protected void move(Point point) {
+    protected void move(Position point) {
 
         currentPos.x = point.x;
         currentPos.y = point.y;
@@ -131,7 +131,7 @@ public class Transporter<A extends Vehicle> {
      *
      * @param car the recently unloaded car
      */
-    private void moveUnloadedCar(A car, Point point) {
+    private void moveUnloadedCar(A car, Position point) {
         car.getCurrentPos().x = point.x;
         car.getCurrentPos().y = point.y;
     }
@@ -152,7 +152,7 @@ public class Transporter<A extends Vehicle> {
      * @param point the point that is being checked.
      * @return true if point is within 'Loading proximity'
      */
-    private boolean checkProximity(Point point) {
+    private boolean checkProximity(Position point) {
 
         return point.x <= currentPos.x + loadingProximity && point.x >= currentPos.x - loadingProximity &&
                 point.y <= currentPos.y + loadingProximity && point.y >= currentPos.y - loadingProximity;

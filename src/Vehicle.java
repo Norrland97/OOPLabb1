@@ -1,5 +1,3 @@
-import com.sun.xml.internal.ws.server.ServerRtException;
-
 import java.awt.*;
 import java.lang.*;
 
@@ -13,7 +11,7 @@ public class Vehicle implements Movable {
     private double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
     private double currentDirection;
-    private Point currentPos;
+    private Position currentPos;
     private Color color; // Color of the car
     private String modelName; // The car model name
     private boolean engineOn;
@@ -32,7 +30,7 @@ public class Vehicle implements Movable {
         this.color = color;
         this.modelName = modelName;
         this.currentDirection = 0;
-        this.currentPos = new Point(0, 0);
+        this.currentPos = new Position(0, 0);
         this.engineOn = false;
         this.isLoaded = false;
     }
@@ -43,7 +41,7 @@ public class Vehicle implements Movable {
     /**
      * @return Returns the position of the Vehicle
      */
-    public Point getCurrentPos() {
+    public Position getCurrentPos() {
         return currentPos;
     }
 
