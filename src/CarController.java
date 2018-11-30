@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class represents the Controller part in the MVC pattern.
@@ -23,7 +24,7 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     private CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
+    static List<Car> cars = new ArrayList<>();
 
     //methods:
 
@@ -34,6 +35,8 @@ public class CarController {
         cc.cars.add(new Volvo240(100, Color.green, "Volvo240", 2));
         cc.cars.add(new Saab95(100, Color.green, "Saab95", 2, false));
         cc.cars.add(new Scania(100, Color.green, "Scania", 2));
+
+        cc.frame.drawPanel.setVehicles(cars);
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -103,6 +106,24 @@ public class CarController {
         double brake = ((double) amount) / 100;
         for (Car car : cars) {
             car.brake(brake);
+        }
+    }
+
+    void setTurboOn(){
+        for (Car c: cars){
+            if (c.toString().equals("Saab95")){
+                Saab95 s = (Saab95) c;
+                s.setTurboOff();
+            }
+        }
+    }
+
+    void setTurboOff(){
+        for (Car c: cars){
+            if (c.toString().equals("Saab95")){
+                Saab95 s = (Saab95) c;
+                s.setTurboOn();
+            }
         }
     }
 

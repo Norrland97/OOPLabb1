@@ -101,14 +101,30 @@ public class CarView extends JFrame{
 
         // ------------- ActionListeners -------------
 
-        //Makes torbo on for SAAB
+        //Turn turbo on for Saab95
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                carC.setTurboOn();
+            }
+        });
+
+        //Turn turbo off for Saab95
+        turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.setTurboOff();
+            }
+        });
+
+        //Lower flat bed for Scania
+        lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 for (Car c: carC.cars){
-                    if (c.toString().equals("Saab95")){
-                        Saab95 s = (Saab95) c;
-                        s.setTurboOn();
+                    if (c.toString().equals("Scania")){
+                        Scania s = (Scania) c;
+                        s.lowerBedAngle();
                     }
                 }
             }
