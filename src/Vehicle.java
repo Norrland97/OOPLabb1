@@ -77,6 +77,13 @@ public class Vehicle implements Movable {
     }
 
     /**
+     * @return returns true if egine is on
+     */
+    public boolean isEngineOn() {
+        return engineOn;
+    }
+
+    /**
      * Changes the color of the Vehicle
      *
      * @param clr the color of the Vehicle

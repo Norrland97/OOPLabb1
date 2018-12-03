@@ -46,7 +46,7 @@ public class CarTrailer extends Truck {
      * Method which lowers the flat bed. Allows for loading of cars.
      */
     public void lowerFlatBed() {
-        if (getCurrentSpeed() == 0)
+        if (getCurrentSpeed() == 0 && !this.isEngineOn())
             parent.setCanLoad(true);
         else
             System.out.println("Can't lower flat bed while driving");

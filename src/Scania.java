@@ -29,7 +29,7 @@ public class Scania extends Truck {
      * Raises the bed angle by 1 degree at a time
      */
     public void raiseBedAngle() {
-        if (getCurrentSpeed() == 0) {
+        if (getCurrentSpeed() == 0 && !this.isEngineOn()) {
             flatBedAngle++;
         } else {
             System.out.println("Cannot raise flat bed while driving!");
