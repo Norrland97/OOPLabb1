@@ -79,7 +79,7 @@ public class Vehicle implements Movable {
     /**
      * @return returns true if egine is on
      */
-    public boolean isEngineOn() {
+    boolean isEngineOn() {
         return engineOn;
     }
 
