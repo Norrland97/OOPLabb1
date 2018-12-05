@@ -60,10 +60,10 @@ public class DrawPanel extends JPanel {
 
     }
 
-    <T>String  getFilePath(T c){
-        return "src" + File.separator + "pics" + File.separator + c.toString() +".jpg";
-        // ersatt filsökvägen från där uppe och gör den generisk
-    }
+    //<T>String  getFilePath(T c){
+    //    return "src" + File.separator + "pics" + File.separator + c.toString() +".jpg";
+    //    // ersatt filsökvägen från där uppe och gör den generisk
+    //}
 
     /**
      * This method is called each time the panel updates/refreshes/repaints itself
