@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class CarTrailerTest {
 
-    CarTrailer ct = new CarTrailer(200,  Color.BLACK, "Cartrailer", 5, false, 5);
+    CarTrailer ct = new CarTrailer(200,  Color.BLACK, "Cartrailer", 5, 5);
     PassengerCar c = new Saab95(200,  Color.BLACK, "Saab95", 4, true);
 
     @Test
@@ -37,7 +37,7 @@ public class CarTrailerTest {
         ct.loadCar(c);
         assertEquals(c.getCurrentPos(), ct.getCurrentPos());
 
-        ct = new CarTrailer(200,  Color.BLACK, "Cartrailer", 5, false, 5);
+        ct = new CarTrailer(200,  Color.BLACK, "Cartrailer", 5, 5);
         c = new Saab95(200,  Color.BLACK, "Saab95", 4, true);
 
         ct.startEngine();
@@ -51,7 +51,7 @@ public class CarTrailerTest {
 
 
 
-        ct = new CarTrailer(200,  Color.BLACK, "Cartrailer", 5, false, 5);
+        ct = new CarTrailer(200,  Color.BLACK, "Cartrailer", 5, 5);
         //ct.loadCar(ct);//Ska inte fungera...
 
         ct.lowerFlatBed();

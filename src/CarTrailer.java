@@ -18,11 +18,10 @@ public class CarTrailer extends Truck {
      * @param color       The color of the CarTrailer
      * @param modelName   The model name of the CarTrailer
      */
-    public CarTrailer(double enginePower, Color color, String modelName, int nrDoors,
-                      Boolean flatBedDown, int maxLoad) {
+    public CarTrailer(double enginePower, Color color, String modelName, int nrDoors, int maxLoad) {
         super(enginePower, color, modelName, nrDoors);
         //this.flatBedDown = flatBedDown;
-        this.parent = new Transporter<>(maxLoad, flatBedDown, getCurrentPos());
+        this.parent = new Transporter<>(maxLoad, false, getCurrentPos());
     }
 
 //----------Public methods-----------
