@@ -97,6 +97,9 @@ public class CarController {
             car.startEngine();
     }
 
+    /**
+     * Calls the stop engine method for each car once
+     */
     void stopAllCars() {
         for (Car car : cars)
             car.stopEngine();
@@ -123,6 +126,9 @@ public class CarController {
         }
     }
 
+    /**
+     * Calls the set turbo on method for each Saab95 once
+     */
     void setTurboOn() {
         for (Car c : cars) {
             if (c.toString().equals("Saab95")) {
@@ -132,6 +138,9 @@ public class CarController {
         }
     }
 
+    /**
+     * Calls the set turbo off method for each Saab95 once
+     */
     void setTurboOff() {
         for (Car c : cars) {
             if (c.toString().equals("Saab95")) {
@@ -141,6 +150,9 @@ public class CarController {
         }
     }
 
+    /**
+     * Calls the lower bed angle method for each Scania once
+     */
     void lowerScaniaFlatBed() {
         for (Car c : cars) {
             if (c.toString().equals("Scania")) {
@@ -151,6 +163,9 @@ public class CarController {
         }
     }
 
+    /**
+     * Calls the raise bed angle method for each Scania once
+     */
     void raiseScaniaFlatBed() {
         for (Car c : cars) {
             if (c.toString().equals("Scania")) {
@@ -161,6 +176,10 @@ public class CarController {
         }
     }
 
+    /**
+     * Reverse the direction for each car once. Used for when the car is hitting a wall.
+     * @param car The car
+     */
     private void inverseDirection(Car car) {
         for (int i = 0; i < 4; i++) {
             car.turnLeft();
